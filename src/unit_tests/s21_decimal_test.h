@@ -3,6 +3,7 @@
 
 #include <check.h>
 #include <stdio.h>
+#include <limits.h>
 
 #include "../s21_decimal.h"
 
@@ -10,4 +11,4 @@ Suite *s21_add_suite(void);
 
 void run_testcase(Suite *testcase);
 
-#endif  //  s21_decimal_TEST_H
+#endif //  s21_decimal_TEST_H
