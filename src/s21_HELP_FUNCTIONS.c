@@ -156,6 +156,20 @@ int big_getBit(s21_big_decimal value, int bit)
 }
 int big_setBit(s21_big_decimal *value, int bit, int num)
 {
+
+        if (num == 1)
+        {
+            value->bits[bit / 32] = value->bits[bit / 32] | (num << (bit % 32));
+        }
+        if (num == 0)
+        {
+            value->bits[bit / 32] = value->bits[bit / 32] & (~(1 << (bit % 32)));
+        }
+
+    return 0;
+}
+int big_setBit_by_shift(s21_big_decimal *value, int bit, int num)
+{
     if (bit <= 191 && bit >= 0)
     {
         if (num == 1)
@@ -346,7 +360,7 @@ void big_shift_right(s21_big_decimal *value, int step)
                     count = 0;
                 }
                 value->bits[big_bit] = value->bits[big_bit] >> 1;
-                big_setBit(value, 32 * (big_bit + 1) - 1, 1);
+                big_setBit_by_shift(value, 32 * (big_bit + 1) - 1, 1);
             }
             else
             {
@@ -430,7 +444,7 @@ void shift_left(s21_big_decimal *value, int step)
                 value->bits[big_bit - 1] = step_left(value->bits[big_bit - 1]);
                 if (count == 1)
                 {
-                    big_setBit(value, (32 * (big_bit - 1)), 1);
+                    big_setBit_by_shift(value, (32 * (big_bit - 1)), 1);
                 }
                 count = 1;
             }
@@ -439,7 +453,7 @@ void shift_left(s21_big_decimal *value, int step)
                 value->bits[big_bit - 1] = step_left(value->bits[big_bit - 1]);
                 if (count == 1)
                 {
-                    big_setBit(value, (32 * (big_bit - 1)), 1);
+                    big_setBit_by_shift(value, (32 * (big_bit - 1)), 1);
                 }
                 count = 0;
             }
