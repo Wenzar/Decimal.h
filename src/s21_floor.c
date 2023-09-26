@@ -14,6 +14,6 @@ int s21_floor(s21_decimal value, s21_decimal *result)
     {
         big_shift_right(&big_copy_decimal, 1);
     }
-    big_uninitilization(big_copy_decimal, &value);
+    big_uninitilization(big_copy_decimal, result);
     return error;
 }

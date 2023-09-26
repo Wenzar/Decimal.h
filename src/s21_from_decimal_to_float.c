@@ -53,6 +53,9 @@ while(my_number>1){
 
 my_number+=integer_part;
 *dst=my_number;
+ if(!sign){
+        *dst*=-1;
+    }
 }
 else{
     
@@ -70,6 +73,9 @@ else{
         integer_part/=10;
     }
     *dst=integer_part;
+    if(!sign){
+        *dst*=-1;
+    }
 }
 return error;
 

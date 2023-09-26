@@ -22,6 +22,6 @@ int s21_round(s21_decimal value, s21_decimal *result)
     {
         big_addition(big_copy_decimal, one_big_decimal, &big_copy_decimal);
     }
-    big_uninitilization(big_copy_decimal, &value);
+    big_uninitilization(big_copy_decimal, result);
     return error;
 }

@@ -2,33 +2,35 @@
 
 int s21_from_decimal_to_int(s21_decimal src, int *dst)
 {
+    s21_big_decimal big_copy_decimal = {0};
+    big_initialization(src, &big_copy_decimal);
     int error = 0;
     int sign = 1;
-    if (getBit(src, 127))
+    if (big_getBit(big_copy_decimal, 223))
     {
-        setBit(&src, 127, 0);
+        big_setBit(&big_copy_decimal, 223, 0);
         sign = 0;
     }
 
-    while ((src.bits[4] >> 16) != 0)
+    while ((big_copy_decimal.bits[6] >> 16) != 0)
     {
-        error = demotion_scale;
+        error = demotion_scale(&big_copy_decimal);
     }
-    if (src.bits[1] || src.bits[2])
+    if (big_copy_decimal.bits[1] || big_copy_decimal.bits[2])
     {
         error = 1;
     }
-    if (src.bits[0] > 2147483647 && sign)
+    if (big_copy_decimal.bits[0] > 2147483647 && sign)
     {
         *dst = 2147483647;
     }
-    else if (src.bits[0] > 2147483647 && !sign)
+    else if (big_copy_decimal.bits[0] > 2147483647 && !sign)
     {
         *dst = -2147483646;
     }
     else
     {
-        *dst = src.bits[0];
+        *dst = big_copy_decimal.bits[0];
     }
 
     return error;
