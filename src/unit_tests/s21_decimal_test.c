@@ -1,18 +1,22 @@
 #include "s21_decimal_test.h"
 
-int main(void) {
-  Suite *list_testcases[] = {s21_add_suite(),
+int main(void)
+{
+  Suite *list_testcases[] = {s21_add_suite(), s21_div_suite(), s21_mul_suite(), s21_sub_suite(),
                              NULL};
-  for (Suite **testcase = list_testcases; *testcase != NULL; testcase++) {
+  for (Suite **testcase = list_testcases; *testcase != NULL; testcase++)
+  {
     run_testcase(*testcase);
   }
   return 0;
 }
 
-void run_testcase(Suite *testcase) {
+void run_testcase(Suite *testcase)
+{
   static int testcase_count = 1;
 
-  if (testcase_count > 0) {
+  if (testcase_count > 0)
+  {
     putchar('\n');
   }
   printf("%s%d%s", "TEST №", testcase_count, "\n");

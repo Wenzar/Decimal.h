@@ -1,8 +1,5 @@
 #include "s21_decimal_test.h"
 
-#define EXPONENT_PLUS_1 65536
-#define EXPONENT_PLUS_2 196608
-
 START_TEST(test0)
 {
   s21_decimal val1 = {{15, 0, 0, ~(UINT_MAX / 2)}};
