@@ -1,6 +1,6 @@
 #include "s21_decimal.h"
 
-int s21_is_equal(s21_decimal value_1, s21_decimal value_2)
+int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2)
 {
     s21_big_decimal current_value_1 = {0};
     s21_big_decimal current_value_2 = {0};
