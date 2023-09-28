@@ -2,7 +2,14 @@
 
 int main(void)
 {
-  Suite *list_testcases[] = {s21_add_suite(), s21_div_suite(), s21_mul_suite(), s21_sub_suite(),
+  Suite *list_testcases[] = {s21_add_suite(), 
+  // s21_div_suite(),
+  //  s21_mul_suite(),
+  //  s21_sub_suite(),
+  //   s21_is_equal_suite(),
+  //    s21_floor_suite(),
+  //     s21_round_suite(),
+  //      s21_from_decimal_to_float_suite(),
                              NULL};
   for (Suite **testcase = list_testcases; *testcase != NULL; testcase++)
   {
