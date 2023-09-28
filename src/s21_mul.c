@@ -20,6 +20,9 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)
         multiplication(current_value_1, current_value_2, &big_result);
         big_setBit(&big_result, 223, 1);
         add_return = bank_round(big_result, &big_result);
+        if(add_return){
+            add_return=2;
+        }
         big_uninitilization(big_result, result);
     }
     result->bits[3] = scale;

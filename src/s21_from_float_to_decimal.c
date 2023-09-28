@@ -4,32 +4,42 @@ int last_bit(s21_decimal value);
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst)
 {
+    int sign=0;
     if (src < 0)
     {
         src = -src;
         setBit(dst, 127, 1);
+        sign=1;
     }
     int error = 0;
     int int_part = src;
+ 
+    int scale=0;
 
     float x = 0;
-    double copy_num = src;
+    double copy_num = src-(int)src;
+    double remainder =  modff(copy_num, &x);
     while (modff(copy_num, &x))
     {
+         scale++;
         copy_num *= 10;
-    }
-    unsigned int remainder = copy_num;
-    dst->bits[0] = remainder;
-    int my_bit = 0;
-    my_bit = last_bit(*dst);
-    dst->bits[1] = int_part;
-    //!!! првильно ли стоят скобки (32 - my_bit)?
-    dst->bits[0] = dst->bits[0] << (32 - my_bit);
-    while (dst->bits[1])
-    {
-        error = shift_right(dst, 1);
+        remainder=(int)copy_num;
     }
 
+  
+  
+    
+    
+    dst->bits[0] = remainder;
+    
+    dst->bits[3]=scale<<16;
+    s21_decimal new={0};
+    s21_decimal copy_res={0};
+    new.bits[0]=int_part;
+    s21_add(*dst,new,&copy_res);
+    *dst=copy_res;
+    setBit(dst,127,sign);
+       // printf("%u", dst->bits[0]);
     return error;
 }
 

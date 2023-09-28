@@ -15,9 +15,12 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)
     {
         if (big_getBit(current_value_1, 223) && big_getBit(current_value_2, 223))
         {
-            difference(current_value_1, current_value_2, &big_result);
+            big_addition(current_value_1, current_value_2, &big_result);
             big_setBit(&big_result, 223, 1);
             sub_return = bank_round(big_result, &big_result);
+            if(sub_return){
+                sub_return=2;
+            }
             big_uninitilization(big_result, result);
         }
         else if (!big_getBit(current_value_1, 223) && big_getBit(current_value_2, 223))
@@ -31,6 +34,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)
             big_addition(current_value_1, current_value_2, &big_result);
             big_setBit(&big_result, 223, 1);
             sub_return = bank_round(big_result, &big_result);
+            if(sub_return){
+                sub_return=2;
+            }
             big_uninitilization(big_result, result);
         }
         else if (!big_getBit(current_value_1, 223) && !big_getBit(current_value_2, 223))
@@ -59,6 +65,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)
             big_addition(current_value_1, current_value_2, &big_result);
             big_setBit(&big_result, 223, 1);
             sub_return = bank_round(big_result, &big_result);
+             if(sub_return){
+                sub_return=2;
+            }
             big_uninitilization(big_result, result);
         }
         else if (!big_getBit(current_value_1, 223) && !big_getBit(current_value_2, 223))
@@ -66,6 +75,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)
             difference(current_value_2, current_value_1, &big_result);
             big_setBit(&big_result, 223, 1);
             sub_return = bank_round(big_result, &big_result);
+             if(sub_return){
+                sub_return=2;
+            }
             big_uninitilization(big_result, result);
         }
     }

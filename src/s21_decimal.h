@@ -6,7 +6,7 @@
 
 typedef struct
 {
-  int bits[4];
+  unsigned int bits[4];
 } s21_decimal;
 
 typedef struct
@@ -46,7 +46,10 @@ int s21_round(s21_decimal value, s21_decimal *result);
 int s21_truncate(s21_decimal value, s21_decimal *result);
 
 // help functions
-
+void small_shift_left(s21_decimal *value, int step);
+int small_find_out_the_degree(s21_decimal scale);
+int check_osnova(s21_big_decimal value);
+int check_error (s21_decimal value_1,s21_decimal value_2);
 int difference(s21_big_decimal value_1, s21_big_decimal value_2, s21_big_decimal *result);
 int getBit(s21_decimal value, int bit);
 int setBit(s21_decimal *value, int bit, int num);

@@ -7,9 +7,23 @@ s21_big_decimal one_big_decimal = {{1, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_ten = {{10, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_decimal_null = {{0, 0, 0, 0, 0, 0, 0}};
 
+int check_error (s21_decimal value_1,s21_decimal value_2){
+    int error=0;
+    for(int i=96; i<=127;i++){
+        if(i<=110||(i>=119&&i<=126)){
+
+        if(getBit(value_1,i)||getBit(value_2,i)){
+            error=1;
+        }
+        }
+       
+    }
+     return error;
+}
 int difference(s21_big_decimal value_1, s21_big_decimal value_2, s21_big_decimal *result)
 {
-    *result = value_1;
+    int error=0;
+    *result=value_1;
     for (int bit = 0; bit <= 191; bit++)
     {
         if (big_getBit(*result, bit) && big_getBit(value_2, bit))
@@ -21,6 +35,9 @@ int difference(s21_big_decimal value_1, s21_big_decimal value_2, s21_big_decimal
             int count_x = bit;
             while (!big_getBit(*result, count_x))
             {
+                if(count_x>=191){
+                    break;
+                }
                 count_x++;
             }
             big_setBit(result, bit, 1);
@@ -43,7 +60,10 @@ int difference(s21_big_decimal value_1, s21_big_decimal value_2, s21_big_decimal
             bit--;
         }
     }
-    return 0;
+    if(result->bits[3]||result->bits[4]||result->bits[5]){
+        error=1;
+    }
+    return error;
 }
 int getBit(s21_decimal value, int bit)
 {
@@ -65,6 +85,11 @@ int find_out_the_degree(s21_big_decimal scale)
 {
     int mask = 0b11111111 << 16;
     return (scale.bits[6] & mask) >> 16;
+}
+int small_find_out_the_degree(s21_decimal scale)
+{
+    int mask = 0b11111111 << 16;
+    return (scale.bits[3] & mask) >> 16;
 }
 
 int degree_comparison(s21_big_decimal value_1, s21_big_decimal value_2)
@@ -148,7 +173,7 @@ void big_uninitilization(s21_big_decimal big_value, s21_decimal *smal_value)
 }
 int big_getBit(s21_big_decimal value, int bit)
 {
-    if (bit <= 223)
+    if (bit <= 223&&bit>=0)
     {
         return !!(value.bits[bit / 32] & (1 << (bit % 32)));
     }
@@ -156,7 +181,8 @@ int big_getBit(s21_big_decimal value, int bit)
 }
 int big_setBit(s21_big_decimal *value, int bit, int num)
 {
-
+if (bit <= 223&&bit>=0)
+    {
         if (num == 1)
         {
             value->bits[bit / 32] = value->bits[bit / 32] | (num << (bit % 32));
@@ -165,11 +191,14 @@ int big_setBit(s21_big_decimal *value, int bit, int num)
         {
             value->bits[bit / 32] = value->bits[bit / 32] & (~(1 << (bit % 32)));
         }
+    }
 
     return 0;
 }
 int big_setBit_by_shift(s21_big_decimal *value, int bit, int num)
 {
+    if (bit <= 223&&bit>=0)
+    {
     if (bit <= 191 && bit >= 0)
     {
         if (num == 1)
@@ -181,23 +210,30 @@ int big_setBit_by_shift(s21_big_decimal *value, int bit, int num)
             value->bits[bit / 32] = value->bits[bit / 32] & (~(1 << (bit % 32)));
         }
     }
+    }
     return 0;
 }
 int demotion_scale(s21_big_decimal *value)
 {
     int error = 0;
     unsigned int tmp_bit = value->bits[6] >> 31;
+    // printf("\nscale %d\n", tmp_bit);
     big_setBit(value, 223, 0);
     unsigned int num = value->bits[6] >> 16;
+    // printf("\nnum %d\n", tmp_bit);
     if (!num)
     {
         error = 1;
     }
+    else{
     num--;
+    }
     value->bits[6] = num << 16;
     big_setBit(value, 223, tmp_bit);
     s21_big_decimal copy_value = *value;
+    
     division_by_integer(*value, big_ten, &copy_value);
+    
     *value = copy_value;
     return error;
 }
@@ -226,6 +262,7 @@ int raise_scale(s21_big_decimal *value)
 }
 int big_addition(s21_big_decimal current_value_1, s21_big_decimal current_value_2, s21_big_decimal *big_result)
 {
+    big_result->bits[6]=current_value_1.bits[6];
     int error = 0;
     for (int bit = 0; bit <= 191; bit++)
     {
@@ -243,10 +280,6 @@ int big_addition(s21_big_decimal current_value_1, s21_big_decimal current_value_
             while ((big_getBit(current_value_1, bit)) || (big_getBit(current_value_2, bit)))
             {
                 bit++;
-                if (bit > 95)
-                {
-                    error = 1;
-                }
                 if ((big_getBit(current_value_1, bit) && (!big_getBit(current_value_2, bit))) || (big_getBit(current_value_2, bit) && (!big_getBit(current_value_1, bit))))
                 {
                     big_setBit(big_result, bit, 0);
@@ -258,6 +291,9 @@ int big_addition(s21_big_decimal current_value_1, s21_big_decimal current_value_
             }
             big_setBit(big_result, bit, 1);
         }
+    }
+    if(big_result->bits[3]/10!=0||big_result->bits[4]||big_result->bits[5]){
+        error=1;
     }
     return error;
 }
@@ -422,6 +458,45 @@ int shift_right(s21_decimal *value, int step)
     }
     return error;
 }
+void small_shift_left(s21_decimal *value, int step)
+{
+    int scale = value->bits[3];
+    for (int i = 0; i < step; i++)
+    {
+        int count = 0;
+        if (getBit(*value, 31))
+        {
+            count = 1;
+        }
+        else
+        {
+            count = 0;
+        }
+        value->bits[0] = value->bits[0]=value->bits[0]<<1;
+        for (int big_bit = 2; big_bit <= 3; big_bit++)
+        {
+            if (getBit(*value, (32 * big_bit - 1)))
+            {
+                value->bits[big_bit - 1] = value->bits[big_bit - 1]=value->bits[big_bit - 1]<<1;
+                if (count == 1)
+                {
+                    setBit(value, (32 * (big_bit - 1)), 1);
+                }
+                count = 1;
+            }
+            else
+            {
+                value->bits[big_bit - 1] = value->bits[big_bit - 1]=value->bits[big_bit - 1]<<1;
+                if (count == 1)
+                {
+                    setBit(value, (32 * (big_bit - 1)), 1);
+                }
+                count = 0;
+            }
+        }
+    }
+    value->bits[3] = scale;
+}
 void shift_left(s21_big_decimal *value, int step)
 {
     int scale = value->bits[6];
@@ -532,70 +607,41 @@ int mantis_s21_is_equal(s21_big_decimal value_1, s21_big_decimal value_2)
 }
 int bank_round(s21_big_decimal value, s21_big_decimal *result)
 {
+    //printf("\nRESULT HERE %u %u %u %u %u %u %u\n", find_out_the_degree(value),value.bits[5],value.bits[4],value.bits[3],value.bits[2],value.bits[1],value.bits[0]);
     int error = 0;
-    if (check_dop_decimal(value))
-    {
-        while (!check_five_number(value))
-        {
-
-            if (demotion_scale(&value) == 1)
-            {
-                error = 1;
+   if(check_dop_decimal(value)){
+     
+    while(check_dop_decimal(value)&&find_out_the_degree(value)!=0){
+      
+        demotion_scale(&value);
+    }
+    if(check_dop_decimal(value)){
+          //printf("HERE");
+    if(value.bits[3]&&find_out_the_degree(value)==0){
+        error=1;
+    }
+}
+    if(check_dop_decimal(value)){
+        while(!check_five_number(value)){
+            demotion_scale(&value);
+        }
+        if(check_remainder(value.bits[0]%10)){
+            if(parity(value.bits[0]%100)){
+            demotion_scale(&value);
+            }
+            else{
+            demotion_scale(&value);
+            if(value.bits[0]!=4294967295){
+              value.bits[0]++;
+            }
             }
         }
-        if (value.bits[0] == 0)
-        {
-
-            if (demotion_scale(&value) == 1)
-            {
-                error = 1;
-            }
-            *result = value;
-        }
-
-        else
-        {
-            int current_number = 0;
-            if (value.bits[0] / 10 == 0)
-            {
-                current_number = value.bits[0];
-            }
-            else
-            {
-                current_number = value.bits[0] % 10;
-            }
-            if (check_remainder(current_number))
-            {
-                if (!parity(value.bits[0]))
-                {
-                    if (demotion_scale(&value) == 1)
-                    {
-                        error = 1;
-                    }
-                    big_addition(value, one_big_decimal, &value);
-                    *result = value;
-                }
-                else
-                {
-
-                    if (demotion_scale(&value) == 1)
-                    {
-                        error = 1;
-                    }
-                    *result = value;
-                }
-            }
-            else
-            {
-
-                if (demotion_scale(&value) == 1)
-                {
-                    error = 1;
-                }
-                *result = value;
-            }
+        else{
+           demotion_scale(&value);
         }
     }
+   }
+   *result=value;
     return error;
 }
 int parity(int value)
@@ -639,12 +685,23 @@ int check_five_number(s21_big_decimal value)
             result = 0;
         }
     }
-    if (result && value.bits[3] / 10 < 10)
+    if (result && value.bits[3] / 10 ==0)
     {
     }
     else
     {
         result = 0;
+    }
+    return result;
+}
+int check_osnova(s21_big_decimal value){
+    int result = 0;
+    for (int big_bits = 0; big_bits <= 3; big_bits++)
+    {
+        if (value.bits[big_bits] != 0)
+        {
+            result = 1;
+        }
     }
     return result;
 }
