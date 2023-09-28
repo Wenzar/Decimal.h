@@ -11,6 +11,7 @@
         "vector": "c",
         "chrono": "c",
         "__locale": "c",
-        "check.h": "c"
+        "check.h": "c",
+        "complex": "c"
     }
 }

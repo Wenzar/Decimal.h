@@ -12,5 +12,6 @@ int main(){
    float src=202.098;
    s21_from_float_to_decimal(src,&src1);
    printf("\nDEC1 sign:%u scale:%u %u %u %u\n",src1.bits[3]>>31, small_find_out_the_degree(src1),src1.bits[2],src1.bits[1],src1.bits[0]);
+   printf("%f", pow(10,8));
     return 0;
 }
