@@ -17,7 +17,9 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
   float x = 0;
   double copy_num = src - (int)src;
   double remainder = modff(copy_num, &x);
+  
   while (modff(copy_num, &x)) {
+    // printf("HERE\n%lf\n", remainder);
     scale++;
     copy_num *= 10;
     remainder = (int)copy_num;
