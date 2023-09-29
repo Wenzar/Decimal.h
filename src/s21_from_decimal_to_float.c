@@ -11,7 +11,7 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
     sign=0;
     big_setBit(&our_copy,223,0);
   }
-     printf("\n%u\n", our_copy.bits[0]);
+     printf("\n%u\n\n", our_copy.bits[0]);
   while((our_copy.bits[0]/(int)pow(10,8))!=0&&find_out_the_degree(our_copy)!=0){
     demotion_scale(&our_copy);
   }
