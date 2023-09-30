@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#define MY_INT_MAX 2147483648
+
 typedef struct
 {
   unsigned int bits[4];
@@ -79,5 +81,6 @@ int check_dop_decimal(s21_big_decimal value);
 int check_five_number(s21_big_decimal value);
 int mantis_is_greater_or_equal(s21_big_decimal value_1, s21_big_decimal value_2);
 void shift_left(s21_big_decimal *value, int step);
+int countFractionalDigits(float num);
 
 #endif

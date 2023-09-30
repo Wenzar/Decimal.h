@@ -1,7 +1,5 @@
 #include "s21_decimal_test.h"
 
-// такая дичь кнч
-
 START_TEST(s21_from_decimal_to_float_1) {
   s21_decimal src;
   int result = 0;

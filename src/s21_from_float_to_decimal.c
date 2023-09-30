@@ -1,56 +1,38 @@
 #include "s21_decimal.h"
+#include <math.h>
 
-int last_bit(s21_decimal value);
-
-int s21_from_float_to_decimal(float src, s21_decimal *dst) {
-  int sign = 0;
-  if (src < 0) {
-    src = -src;
-    setBit(dst, 127, 1);
-    sign = 1;
-  }
-  int error = 0;
-  int int_part = src;
-
-  int scale = 0;
-
-  float x = 0;
-  double copy_num = src - (int)src;
-  double remainder = modff(copy_num, &x);
-  
-  while (modff(copy_num, &x)) {
-    // printf("HERE\n%lf\n", remainder);
-    scale++;
-    copy_num *= 10;
-    remainder = (int)copy_num;
-  }
-
-  dst->bits[0] = remainder;
-
-  dst->bits[3] = scale << 16;
-  s21_decimal new = {0};
-  s21_decimal copy_res = {0};
-  new.bits[0] = int_part;
-  s21_add(*dst, new, &copy_res);
-  *dst = copy_res;
-  setBit(dst, 127, sign);
-  // printf("%u", dst->bits[0]);
-  return error;
-}
-
-int last_bit(s21_decimal value) {
-  int bit = 0;
-  for (int i = 0; i <= 95; i++) {
-    int new_bit = 0;
-    for (int j = i + 1; j <= 95; j++) {
-      if (getBit(value, j)) {
-        new_bit = 1;
-      }
+int s21_from_float_to_decimal(float src, s21_decimal *dst)
+{
+    int sign = 0;
+    if (src < 0)
+    {
+        src = -src;
+        setBit(dst, 127, 1);
+        sign = 1;
     }
-    if (new_bit == 0) {
-      bit = i;
-      break;
+
+    int error = 0;
+    int int_part = (int)src;
+    float fractional_part = src - int_part;
+
+    int scale = 0;
+
+    while (fractional_part != 0.0 && scale < countFractionalDigits(src))
+    {
+        fractional_part *= 10;
+        int digit = (int)roundf(fractional_part);
+        dst->bits[0] = dst->bits[0] * 10 + digit;
+        fractional_part -= digit;
+        scale++;
     }
-  }
-  return bit;
+
+    dst->bits[3] = scale << 16;
+    s21_decimal new = {0};
+    s21_decimal copy_res = {0};
+    new.bits[0] = int_part;
+    s21_add(*dst, new, &copy_res);
+    *dst = copy_res;
+    setBit(dst, 127, sign);
+    // printf("\nres: \n%u %u\n", dst->bits[1], dst->bits[0]);
+    return error;
 }
