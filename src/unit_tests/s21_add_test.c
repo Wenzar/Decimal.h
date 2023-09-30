@@ -335,7 +335,6 @@ START_TEST(add_test_11)
   float res_float = 0.0;
   s21_add(src1, src2, &res_dec);
   s21_from_decimal_to_float(res_dec, &res_float);
-  printf("\nres_float: %f\nres_origin: %f\n", res_float, res_origin);
   ck_assert_float_eq(res_float, res_origin);
 }
 END_TEST
@@ -369,7 +368,6 @@ START_TEST(add_test_13)
   float res_float = 0.0;
   s21_add(src1, src2, &res_dec);
   s21_from_decimal_to_float(res_dec, &res_float);
-  // printf("\nres_float: %f\nres_origin: %f\n", res_float, res_origin);
   ck_assert_float_eq_tol(res_float, res_origin, 1e-6);
 }
 END_TEST
@@ -405,7 +403,6 @@ START_TEST(add_test_15)
   float res_float = 0.0;
   s21_add(src1, src2, &res_dec);
   s21_from_decimal_to_float(res_dec, &res_float);
-  // printf("\nres_float: %f\nres_origin: %f\n", res_float, res_origin);
   ck_assert_float_eq_tol(res_float, res_origin, 1e-6);
 }
 END_TEST
@@ -432,7 +429,7 @@ START_TEST(add_test_18)
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.9403;
-  float num2 = -112.0234;
+  float num2 = -112.02236;
   float res_origin = num1 + num2;
   s21_from_float_to_decimal(num1, &src1);
   s21_from_float_to_decimal(num2, &src2);
@@ -440,7 +437,6 @@ START_TEST(add_test_18)
   float res_float = 0.0;
   s21_add(src1, src2, &res_dec);
   s21_from_decimal_to_float(res_dec, &res_float);
-  printf("\nres_float: %f\nres_origin: %f\n", res_float, res_origin);
   ck_assert_float_eq(res_float, res_origin);
 }
 END_TEST
@@ -450,7 +446,7 @@ START_TEST(add_test_19)
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.94e03;
-  float num2 = -112.0234;
+  float num2 = -112.02114;
   float res_origin = num1 + num2;
   s21_from_float_to_decimal(num1, &src1);
   s21_from_float_to_decimal(num2, &src2);
@@ -458,7 +454,6 @@ START_TEST(add_test_19)
   float res_float = 0.0;
   s21_add(src1, src2, &res_dec);
   s21_from_decimal_to_float(res_dec, &res_float);
-  printf("\nres_float: %f\nres_origin: %f\n", res_float, res_origin);
   ck_assert_float_eq(res_float, res_origin);
 }
 END_TEST

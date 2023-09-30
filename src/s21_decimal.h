@@ -2,6 +2,7 @@
 #define STRING_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 #define MY_INT_MAX 2147483648
@@ -51,7 +52,7 @@ int s21_truncate(s21_decimal value, s21_decimal *result);
 void small_shift_left(s21_decimal *value, int step);
 int small_find_out_the_degree(s21_decimal scale);
 int check_osnova(s21_big_decimal value);
-int check_error (s21_decimal value_1,s21_decimal value_2);
+int check_error(s21_decimal value_1, s21_decimal value_2);
 int difference(s21_big_decimal value_1, s21_big_decimal value_2, s21_big_decimal *result);
 int getBit(s21_decimal value, int bit);
 int setBit(s21_decimal *value, int bit, int num);
@@ -82,5 +83,6 @@ int check_five_number(s21_big_decimal value);
 int mantis_is_greater_or_equal(s21_big_decimal value_1, s21_big_decimal value_2);
 void shift_left(s21_big_decimal *value, int step);
 int countFractionalDigits(float num);
+float s21_rand_r(float a, float b);
 
 #endif
