@@ -341,27 +341,26 @@ END_TEST
 
 START_TEST(s21_less_or_equal_23) {
   s21_decimal dec5 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}};  // -1.2;
+      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}}; // -1.2;
   ck_assert_int_eq(s21_is_less_or_equal(dec5, dec6), 0);
   ck_assert_int_eq(s21_is_less_or_equal(dec6, dec5), 1);
 
   s21_decimal dec7 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
-  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2;
+      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
+  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2;
   ck_assert_int_eq(s21_is_less_or_equal(dec7, dec8), 1);
   ck_assert_int_eq(s21_is_less_or_equal(dec8, dec7), 0);
 
   s21_decimal dec1 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2;
+      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2;
   ck_assert_int_eq(s21_is_less_or_equal(dec1, dec2), 0);
   ck_assert_int_eq(s21_is_less_or_equal(dec2, dec1), 1);
 
   s21_decimal dec3 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
-  s21_decimal dec4 = {
-      {12, 0, 0, 0b10000000000000010000000000000000}};  //  -1.2;
+      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
+  s21_decimal dec4 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //  -1.2;
   ck_assert_int_eq(s21_is_less_or_equal(dec3, dec4), 1);
   ck_assert_int_eq(s21_is_less_or_equal(dec4, dec3), 0);
 
@@ -1224,7 +1223,6 @@ Suite *s21_suite_is_less_or_equal(void) {
   tcase_add_test(tc, is_less_or_equal_12);
   tcase_add_test(tc, is_less_or_equal_18);
 
-  
   tcase_add_test(tc, less_or_equal_1);
   tcase_add_test(tc, less_or_equal_2);
   tcase_add_test(tc, less_or_equal_3);
@@ -1298,7 +1296,6 @@ Suite *s21_suite_is_less_or_equal(void) {
   tcase_add_test(tc, s21_is_less_or_equalTest34);
   tcase_add_test(tc, s21_is_less_or_equalTest35);
   tcase_add_test(tc, s21_is_less_or_equalTest36);
-  
 
   suite_add_tcase(s, tc);
   return s;

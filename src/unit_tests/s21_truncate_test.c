@@ -47,7 +47,6 @@ START_TEST(truncate_2) {
 }
 END_TEST
 
-
 START_TEST(truncate_5) {
   float n = s21_rand_r(-8388608, 8388608);
   truncate_test_function(n, 10);

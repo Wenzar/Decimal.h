@@ -178,28 +178,26 @@ END_TEST
 
 START_TEST(s21_greater_11) {
   s21_decimal dec5 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-  s21_decimal dec6 = {
-      {12, 0, 0, 0b10000000000000010000000000000000}};  //  -1.2;
+      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //  -1.2;
   ck_assert_int_eq(s21_is_greater(dec5, dec6), 1);
   ck_assert_int_eq(s21_is_greater(dec6, dec5), 0);
 
   s21_decimal dec7 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
-  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2;
+      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
+  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2;
   ck_assert_int_eq(s21_is_greater(dec7, dec8), 0);
   ck_assert_int_eq(s21_is_greater(dec8, dec7), 1);
 
   s21_decimal dec1 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2
+      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2
   ck_assert_int_eq(s21_is_greater(dec1, dec2), 1);
   ck_assert_int_eq(s21_is_greater(dec2, dec1), 0);
 
   s21_decimal dec3 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
-  s21_decimal dec4 = {
-      {12, 0, 0, 0b10000000000000010000000000000000}};  //   -1.2
+      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
+  s21_decimal dec4 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //   -1.2
   ck_assert_int_eq(s21_is_greater(dec3, dec4), 0);
   ck_assert_int_eq(s21_is_greater(dec4, dec3), 1);
 }
@@ -1022,7 +1020,7 @@ Suite *s21_suite_is_greater(void) {
   tcase_add_loop_test(tc, is_greater_9, 0, 100);
   tcase_add_loop_test(tc, is_greater_10, 0, 100);
   tcase_add_test(tc, is_greater_11);
-  
+
   tcase_add_test(tc, greater_1);
   tcase_add_test(tc, greater_2);
   tcase_add_test(tc, greater_3);
@@ -1083,8 +1081,6 @@ Suite *s21_suite_is_greater(void) {
   tcase_add_test(tc, s21_test_is_greater_51);
   tcase_add_test(tc, s21_test_is_greater_41);
   tcase_add_test(tc, s21_test_is_greater_2i);
-
-  
 
   suite_add_tcase(s, tc);
   return s;

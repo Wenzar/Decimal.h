@@ -1,7 +1,6 @@
 #include "s21_decimal_test.h"
 
-START_TEST(from_decimal_to_float_2)
-{
+START_TEST(from_decimal_to_float_2) {
   s21_decimal var = {{0, 0, 0, 0}};
   float value = 0;
   s21_from_float_to_decimal(5.0, &var);
@@ -10,8 +9,7 @@ START_TEST(from_decimal_to_float_2)
 }
 END_TEST
 
-START_TEST(from_decimal_to_float_3)
-{
+START_TEST(from_decimal_to_float_3) {
   float n = 838868.24352346;
   s21_decimal var = {{0, 0, 0, 0}};
   float value = 0;
@@ -21,9 +19,7 @@ START_TEST(from_decimal_to_float_3)
 }
 END_TEST
 
-
-START_TEST(s21_from_decimal_to_float_1)
-{
+START_TEST(s21_from_decimal_to_float_1) {
   s21_decimal var = {0};
   float value = 0;
   s21_from_float_to_decimal(5.0, &var);
@@ -32,8 +28,7 @@ START_TEST(s21_from_decimal_to_float_1)
 }
 END_TEST
 
-START_TEST(s21_from_decimal_to_float_2)
-{
+START_TEST(s21_from_decimal_to_float_2) {
   float n = s21_rand_r(-8388608, 8388608);
   s21_decimal var = {0};
   float value = 0;
@@ -43,8 +38,7 @@ START_TEST(s21_from_decimal_to_float_2)
 }
 END_TEST
 
-START_TEST(s21_from_decimal_to_float_3)
-{
+START_TEST(s21_from_decimal_to_float_3) {
   float n = s21_rand_r(-1e-6 / 3, 1e-6 / 3);
   s21_decimal var = {0};
   float value = 0;
@@ -54,8 +48,7 @@ START_TEST(s21_from_decimal_to_float_3)
 }
 END_TEST
 
-START_TEST(s21_from_decimal_to_float_6)
-{
+START_TEST(s21_from_decimal_to_float_6) {
   s21_decimal value = {{0xFFFFFF, 0, 0, 0}};
   float result = 0;
   float check = 16777215;
@@ -65,8 +58,7 @@ START_TEST(s21_from_decimal_to_float_6)
 }
 END_TEST
 
-START_TEST(s21_from_decimal_to_float_7)
-{
+START_TEST(s21_from_decimal_to_float_7) {
   s21_decimal value = {{0xFFFFFFFF, 0xFFFFFFFF, 0, 0}};
   float result = 0;
   float check = 0xFFFFFFFFFFFFFFFF;
@@ -76,8 +68,7 @@ START_TEST(s21_from_decimal_to_float_7)
 }
 END_TEST
 
-START_TEST(s21_from_decimal_to_float_8)
-{
+START_TEST(s21_from_decimal_to_float_8) {
   s21_decimal src = {0};
   int result = 0;
   float number = 0.0;
@@ -91,11 +82,9 @@ START_TEST(s21_from_decimal_to_float_8)
 }
 END_TEST
 
-Suite *s21_from_decimal_to_float_suite(void)
-{
+Suite *s21_from_decimal_to_float_suite(void) {
   Suite *s = suite_create("from_decimal_to_float");
   TCase *tc = tcase_create("from_decimal_to_float_tc");
-
 
   tcase_add_test(tc, from_decimal_to_float_2);
   tcase_add_loop_test(tc, from_decimal_to_float_3, 0, 100);

@@ -74,7 +74,7 @@ START_TEST(s21_test_from_int_to_decimal_0) {
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{100, 0, 0, 0}};
   ck_assert_int_eq(add, 0);
   // выходное значение s21_from_int_to_decimal - 0 TRUE и 1 FALSE
@@ -89,7 +89,7 @@ START_TEST(s21_test_from_int_to_decimal_1) {
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{1000, 0, 0, 0}};
   ck_assert_int_eq(add, 0);
   // выходное значение s21_from_int_to_decimal -
@@ -105,10 +105,10 @@ START_TEST(s21_test_from_int_to_decimal_2) {
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
-  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-                             // 0 TRUE и 1 FALSE
+  ck_assert_int_eq(add, 0); // выходное значение s21_from_int_to_decimal -
+                            // 0 TRUE и 1 FALSE
   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
   equal = s21_is_equal(b, etalon);
   ck_assert_int_eq(equal, 1);
@@ -120,10 +120,10 @@ START_TEST(s21_test_from_int_to_decimal_3) {
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
-  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-                             // 0 TRUE и 1 FALSE
+  ck_assert_int_eq(add, 0); // выходное значение s21_from_int_to_decimal -
+                            // 0 TRUE и 1 FALSE
   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
   equal = s21_is_equal(b, etalon);
   ck_assert_int_eq(equal, 0);
@@ -135,10 +135,10 @@ START_TEST(s21_test_from_int_to_decimal_4) {
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
-  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-                             // 0 TRUE и 1 FALSE
+  ck_assert_int_eq(add, 0); // выходное значение s21_from_int_to_decimal -
+                            // 0 TRUE и 1 FALSE
   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
   equal = s21_is_equal(b, etalon);
   ck_assert_int_eq(equal, 1);
@@ -146,14 +146,14 @@ START_TEST(s21_test_from_int_to_decimal_4) {
 END_TEST
 
 START_TEST(s21_test_from_int_to_decimal_5) {
-  a = 0;  // ERROR of NAN
+  a = 0; // ERROR of NAN
   s21_decimal b = {{0, 0, 0, 0}};
   s21_decimal *ptr_b = &b;
 
-  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  add = s21_from_int_to_decimal(a, ptr_b); // a записываем в b
   s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
-  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-                             // 0 TRUE и 1 FALSE
+  ck_assert_int_eq(add, 0); // выходное значение s21_from_int_to_decimal -
+                            // 0 TRUE и 1 FALSE
   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
   equal = s21_is_equal(b, etalon);
   ck_assert_int_eq(equal, 0);
@@ -329,7 +329,6 @@ Suite *s21_suite_from_int_to_decimal(void) {
   tcase_add_test(tc, from_int_to_decimal_1);
   tcase_add_test(tc, from_int_to_decimal_2);
 
- 
   tcase_add_test(tc, s21_from_int_to_decimal_1);
 
   tcase_add_test(tc, s21_test_from_int_to_decimal_0);
@@ -349,7 +348,6 @@ Suite *s21_suite_from_int_to_decimal(void) {
   tcase_add_test(tc, s21_from_int_to_decimalTest9);
   tcase_add_test(tc, from_int_to_decimal_0);
   tcase_add_test(tc, from_int_to_decimal_1);
- 
 
   suite_add_tcase(s, tc);
   return s;

@@ -2,8 +2,8 @@
 #define s21_decimal_TEST_H
 
 #include <check.h>
-#include <stdio.h>
 #include <limits.h>
+#include <stdio.h>
 
 #include "../s21_decimal.h"
 
@@ -13,7 +13,7 @@ Suite *s21_mul_suite(void);
 Suite *s21_sub_suite(void);
 Suite *s21_is_equal_suite(void);
 Suite *s21_floor_suite(void);
-Suite* s21_round_suite(void);
+Suite *s21_round_suite(void);
 Suite *s21_from_decimal_to_float_suite(void);
 Suite *s21_suite_from_decimal_to_int(void);
 Suite *s21_suite_from_int_to_decimal(void);

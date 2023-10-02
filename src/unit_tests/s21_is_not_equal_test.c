@@ -140,27 +140,27 @@ END_TEST
 
 START_TEST(s21_not_equal_7) {
   s21_decimal dec1 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-  s21_decimal dec2 = {{12, 0, 0, 0b10000000000000010000000000000000}};  // -1.2;
+      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+  s21_decimal dec2 = {{12, 0, 0, 0b10000000000000010000000000000000}}; // -1.2;
   ck_assert_int_eq(s21_is_not_equal(dec1, dec2), 1);
 }
 END_TEST
 START_TEST(s21_not_equal_8) {
   s21_decimal dec3 = {
-      {120000, 0, 0, 0b00000000000001000000000000000000}};  //  12.0000
-  s21_decimal dec4 = {{12, 0, 0, 0b00000000000000000000000000000000}};  //
+      {120000, 0, 0, 0b00000000000001000000000000000000}}; //  12.0000
+  s21_decimal dec4 = {{12, 0, 0, 0b00000000000000000000000000000000}}; //
   ck_assert_int_eq(s21_is_not_equal(dec3, dec4), 0);
 }
 END_TEST
 START_TEST(s21_not_equal_9) {
-  s21_decimal dec5 = {{0, 0, 0, 0b00000000000000000000000000000000}};   //  0
-  s21_decimal dec6 = {{00, 0, 0, 0b00000000000000010000000000000000}};  //
+  s21_decimal dec5 = {{0, 0, 0, 0b00000000000000000000000000000000}};  //  0
+  s21_decimal dec6 = {{00, 0, 0, 0b00000000000000010000000000000000}}; //
   ck_assert_int_eq(s21_is_not_equal(dec5, dec6), 0);
 }
 END_TEST
 START_TEST(s21_not_equal_10) {
-  s21_decimal dec7 = {{0, 0, 0, 0b00000000000000000000000000000000}};  //   0
-  s21_decimal dec8 = {{0, 0, 0, 0b10000000000000000000000000000000}};  //  -0;
+  s21_decimal dec7 = {{0, 0, 0, 0b00000000000000000000000000000000}}; //   0
+  s21_decimal dec8 = {{0, 0, 0, 0b10000000000000000000000000000000}}; //  -0;
   ck_assert_int_eq(s21_is_not_equal(dec7, dec8), 0);
 }
 END_TEST
@@ -186,7 +186,7 @@ Suite *s21_suite_is_not_equal(void) {
   tcase_add_test(tc, s21_not_equal_8);
   tcase_add_test(tc, s21_not_equal_9);
   tcase_add_test(tc, s21_not_equal_10);
-  
+
   suite_add_tcase(s, tc);
   return s;
 }

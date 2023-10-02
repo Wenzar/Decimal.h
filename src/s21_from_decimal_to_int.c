@@ -27,8 +27,8 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     *dst = -*dst;
   }
 
-    // printf("\nRESULT from_decimal_to_int %u %u %u %u \n", src.bits[3],
-    //        src.bits[2], src.bits[1], src.bits[0]);
+  // printf("\nRESULT from_decimal_to_int %u %u %u %u \n", src.bits[3],
+  //        src.bits[2], src.bits[1], src.bits[0]);
 
   return error;
 }

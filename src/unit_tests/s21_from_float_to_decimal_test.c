@@ -883,8 +883,6 @@ START_TEST(float_to_decimal_70) {
 }
 END_TEST
 
-
-
 START_TEST(float_to_decimal_73) {
   float f = 1.0 / 0.0;
   s21_decimal result = {0};

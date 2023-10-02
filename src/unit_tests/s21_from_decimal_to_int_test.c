@@ -3,7 +3,6 @@
 #define EXPONENT_PLUS_1 65536
 #define EXPONENT_PLUS_28 1835008
 
-
 START_TEST(from_decimal_to_int_2) {
   s21_decimal var = {{0, 0, 0, 0}};
   int value = 0;
@@ -94,7 +93,7 @@ START_TEST(s21_from_decimal_to_int_5) {
   src.bits[0] = 18;
   src.bits[1] = 0;
   src.bits[2] = 0;
-  src.bits[3] = c;  // 2147483648
+  src.bits[3] = c; // 2147483648
   result = s21_from_decimal_to_int(src, &number);
   ck_assert_int_eq(number, -18);
   ck_assert_int_eq(result, 0);
@@ -248,7 +247,7 @@ END_TEST
 
 START_TEST(s21_test_from_decimal_to_int_11) {
   s21_decimal a = {{INT_MAX, 0, 0, EXPONENT_PLUS_1}};
-  check = 214748364;  // (int)(INT_MAX / 10^1)
+  check = 214748364; // (int)(INT_MAX / 10^1)
   code = s21_from_decimal_to_int(a, &result);
   ck_assert_int_eq(result, check);
   ck_assert_int_eq(code, 0);
@@ -266,7 +265,7 @@ END_TEST
 
 START_TEST(s21_test_from_decimal_to_int_14) {
   s21_decimal a = {{INT_MAX, 0, 0, EXPONENT_PLUS_28}};
-  check = 0;  // (int)(INT_MAX / 10^28)
+  check = 0; // (int)(INT_MAX / 10^28)
   code = s21_from_decimal_to_int(a, &result);
   ck_assert_int_eq(result, check);
   ck_assert_int_eq(code, 0);
@@ -480,7 +479,6 @@ Suite *s21_suite_from_decimal_to_int(void) {
   tcase_add_loop_test(tc, from_decimal_to_int_3, 0, 1000);
   tcase_add_test(tc, from_decimal_to_int_4);
 
-  
   tcase_add_test(tc, s21_from_decimal_to_int_1);
   tcase_add_test(tc, s21_from_decimal_to_int_2);
   // tcase_add_test(tc, s21_from_decimal_to_int_3);
@@ -516,7 +514,6 @@ Suite *s21_suite_from_decimal_to_int(void) {
   tcase_add_test(tc, s21_from_decimal_to_intTest13);
   tcase_add_test(tc, s21_from_decimal_to_intTest14);
   tcase_add_test(tc, s21_from_decimal_to_intTest15);
-  
 
   suite_add_tcase(s, tc);
   return s;

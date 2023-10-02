@@ -3,11 +3,11 @@
 #include "s21_decimal.h"
 #include "s21_from_decimal_to_float.c"
 #include "s21_from_float_to_decimal.c"
+#include "s21_from_int_to_decimal.c"
 #include "s21_sub.c"
 #include <check.h>
 #include <limits.h>
 #include <stdio.h>
-#include "s21_from_int_to_decimal.c"
 
 int main() {
   //   s21_decimal src1 = {0};
@@ -49,7 +49,7 @@ int main() {
   printf("\nDEC2 sign:%u scale:%u %u %u %u\n", src2.bits[3] >> 31,
          small_find_out_the_degree(src2), src2.bits[2], src2.bits[1],
          src2.bits[0]);
-  float res_origin =  -1235.234;
+  float res_origin = -1235.234;
   s21_decimal res = {0};
   s21_add(src1, src2, &res);
   s21_from_decimal_to_float(res, &res_our_dec);

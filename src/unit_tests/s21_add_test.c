@@ -3,8 +3,7 @@
 #define EXPONENT_PLUS_1 65536
 #define EXPONENT_PLUS_2 196608
 
-START_TEST(add_0)
-{
+START_TEST(add_0) {
   s21_decimal val1 = {{15, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{2, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -12,8 +11,7 @@ START_TEST(add_0)
 }
 END_TEST
 
-START_TEST(add_1)
-{
+START_TEST(add_1) {
   s21_decimal val1 = {{15, 0, 0, 0}};
   s21_decimal val2 = {{15, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -21,8 +19,7 @@ START_TEST(add_1)
 }
 END_TEST
 
-START_TEST(add_2)
-{
+START_TEST(add_2) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
   s21_decimal val2 = {{1, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -30,8 +27,7 @@ START_TEST(add_2)
 }
 END_TEST
 
-START_TEST(add_3)
-{
+START_TEST(add_3) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{2, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -39,8 +35,7 @@ START_TEST(add_3)
 }
 END_TEST
 
-START_TEST(add_4)
-{
+START_TEST(add_4) {
   s21_decimal val1 = {{8, 0, 0, 0}};
   s21_decimal val2 = {{2, 0, 0, 0}};
   s21_decimal res;
@@ -48,8 +43,7 @@ START_TEST(add_4)
 }
 END_TEST
 
-START_TEST(add_5)
-{
+START_TEST(add_5) {
   s21_decimal val1 = {{2, 0, 0, 0}};
   s21_decimal val2 = {{8, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -57,8 +51,7 @@ START_TEST(add_5)
 }
 END_TEST
 
-START_TEST(add_6)
-{
+START_TEST(add_6) {
   s21_decimal val1 = {{8, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{2, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -66,8 +59,7 @@ START_TEST(add_6)
 }
 END_TEST
 
-START_TEST(add_7)
-{
+START_TEST(add_7) {
   s21_decimal val1 = {{2, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{8, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -75,8 +67,7 @@ START_TEST(add_7)
 }
 END_TEST
 
-START_TEST(add_8)
-{
+START_TEST(add_8) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
   s21_decimal res = {{0}};
@@ -84,8 +75,7 @@ START_TEST(add_8)
 }
 END_TEST
 
-START_TEST(add_9)
-{
+START_TEST(add_9) {
   s21_decimal val1 = {{4, 0, 0, 0}};
   s21_decimal val2 = {{8, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {0};
@@ -93,8 +83,7 @@ START_TEST(add_9)
 }
 END_TEST
 
-START_TEST(add_10)
-{
+START_TEST(add_10) {
   s21_decimal val1 = {{8, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{0}};
   s21_decimal res = {{0}};
@@ -102,8 +91,7 @@ START_TEST(add_10)
 }
 END_TEST
 
-START_TEST(add_11)
-{
+START_TEST(add_11) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{4, 0, 0, 0}};
   s21_decimal res = {{0}};
@@ -111,8 +99,7 @@ START_TEST(add_11)
 }
 END_TEST
 
-START_TEST(add_12)
-{
+START_TEST(add_12) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{4, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -120,8 +107,7 @@ START_TEST(add_12)
 }
 END_TEST
 
-START_TEST(add_13)
-{
+START_TEST(add_13) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
   s21_decimal val2 = {{4, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -129,8 +115,7 @@ START_TEST(add_13)
 }
 END_TEST
 
-START_TEST(add_14)
-{
+START_TEST(add_14) {
   s21_decimal val1 = {{4, 0, 0, 0}};
   s21_decimal val2 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -138,8 +123,7 @@ START_TEST(add_14)
 }
 END_TEST
 
-START_TEST(add_15)
-{
+START_TEST(add_15) {
   s21_decimal val1 = {{4, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
   s21_decimal res = {{0}};
@@ -147,8 +131,7 @@ START_TEST(add_15)
 }
 END_TEST
 
-START_TEST(add_16)
-{
+START_TEST(add_16) {
   s21_decimal val1 = {{4, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
@@ -156,8 +139,7 @@ START_TEST(add_16)
 }
 END_TEST
 
-START_TEST(add_test_1)
-{
+START_TEST(add_test_1) {
   int num1 = 42;
   int num2 = 30;
   int sum_int = 72;
@@ -174,8 +156,7 @@ START_TEST(add_test_1)
 }
 END_TEST
 
-START_TEST(add_test_2)
-{
+START_TEST(add_test_2) {
   int num1 = 1000;
   int num2 = 2000;
   int sum_int = 3000;
@@ -191,8 +172,7 @@ START_TEST(add_test_2)
 }
 END_TEST
 
-START_TEST(add_test_3)
-{
+START_TEST(add_test_3) {
   int num1 = 0;
   int num2 = 0;
   int sum_int = 0;
@@ -208,8 +188,7 @@ START_TEST(add_test_3)
 }
 END_TEST
 
-START_TEST(add_test_4)
-{
+START_TEST(add_test_4) {
   int num1 = -15;
   int num2 = 5;
   int sum_int = -10;
@@ -225,8 +204,7 @@ START_TEST(add_test_4)
 }
 END_TEST
 
-START_TEST(add_test_5)
-{
+START_TEST(add_test_5) {
   int num1 = 11115;
   int num2 = 5;
   int sum_int = 11120;
@@ -242,8 +220,7 @@ START_TEST(add_test_5)
 }
 END_TEST
 
-START_TEST(add_test_6)
-{
+START_TEST(add_test_6) {
   int num1 = -1;
   int num2 = -10;
   int sum_int = -11;
@@ -259,8 +236,7 @@ START_TEST(add_test_6)
 }
 END_TEST
 
-START_TEST(add_test_7)
-{
+START_TEST(add_test_7) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   int a = INT_MAX;
   int b = -3;
@@ -275,8 +251,7 @@ START_TEST(add_test_7)
 }
 END_TEST
 
-START_TEST(add_test_8)
-{
+START_TEST(add_test_8) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   int a = -9403;
   int b = 234;
@@ -291,8 +266,7 @@ START_TEST(add_test_8)
 }
 END_TEST
 
-START_TEST(add_test_9)
-{
+START_TEST(add_test_9) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   int a = 9403;
   int b = 202;
@@ -307,8 +281,7 @@ START_TEST(add_test_9)
 }
 END_TEST
 
-START_TEST(add_test_10)
-{
+START_TEST(add_test_10) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   int a = 450;
   int b = -50;
@@ -323,8 +296,7 @@ START_TEST(add_test_10)
 }
 END_TEST
 
-START_TEST(add_test_11)
-{
+START_TEST(add_test_11) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   float num1 = 7.25;
   float num2 = 9.5;
@@ -339,8 +311,7 @@ START_TEST(add_test_11)
 }
 END_TEST
 
-START_TEST(add_test_12)
-{
+START_TEST(add_test_12) {
   s21_decimal src1 = {{0}}, src2 = {{0}};
   int num1 = -1234;
   float num2 = 1.234;
@@ -355,8 +326,7 @@ START_TEST(add_test_12)
 }
 END_TEST
 
-START_TEST(add_test_13)
-{
+START_TEST(add_test_13) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   int num1 = -1;
@@ -372,8 +342,7 @@ START_TEST(add_test_13)
 }
 END_TEST
 
-START_TEST(add_test_14)
-{
+START_TEST(add_test_14) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = 1.12e-27;
@@ -390,8 +359,7 @@ START_TEST(add_test_14)
 }
 END_TEST
 
-START_TEST(add_test_15)
-{
+START_TEST(add_test_15) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = 9999945.123456;
@@ -407,8 +375,7 @@ START_TEST(add_test_15)
 }
 END_TEST
 
-START_TEST(add_test_16)
-{
+START_TEST(add_test_16) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.9403;
@@ -424,8 +391,7 @@ START_TEST(add_test_16)
 }
 END_TEST
 
-START_TEST(add_test_18)
-{
+START_TEST(add_test_18) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.9403;
@@ -441,8 +407,7 @@ START_TEST(add_test_18)
 }
 END_TEST
 
-START_TEST(add_test_19)
-{
+START_TEST(add_test_19) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.94e03;
@@ -458,8 +423,7 @@ START_TEST(add_test_19)
 }
 END_TEST
 
-START_TEST(add_test_20)
-{
+START_TEST(add_test_20) {
   s21_decimal src1 = {{0}};
   s21_decimal src2 = {{0}};
   float num1 = -0.94e03;
@@ -475,8 +439,7 @@ START_TEST(add_test_20)
 }
 END_TEST
 
-START_TEST(add_test_21)
-{
+START_TEST(add_test_21) {
   s21_decimal dec1 = {{0}};
   s21_decimal dec2 = {{0}};
   int tmp1 = 100;
@@ -492,8 +455,7 @@ START_TEST(add_test_21)
 }
 END_TEST
 
-START_TEST(add_test_22)
-{
+START_TEST(add_test_22) {
   s21_decimal dec1 = {{0}};
   s21_decimal dec2 = {{0}};
   int tmp1 = -100;
@@ -509,8 +471,7 @@ START_TEST(add_test_22)
 }
 END_TEST
 
-START_TEST(add_test_23)
-{
+START_TEST(add_test_23) {
   s21_decimal dec1 = {{0}};
   s21_decimal dec2 = {{0}};
   int tmp1 = 2147483647;
@@ -526,8 +487,7 @@ START_TEST(add_test_23)
 }
 END_TEST
 
-START_TEST(add_test_24)
-{
+START_TEST(add_test_24) {
   s21_decimal dec1 = {{0}};
   s21_decimal dec2 = {{0}};
   dec1.bits[3] = 0x300000;
@@ -552,8 +512,7 @@ START_TEST(add_test_24)
 }
 END_TEST
 
-START_TEST(add_test_25)
-{
+START_TEST(add_test_25) {
   s21_decimal dec1 = {{0}};
   s21_decimal dec2 = {{0}};
   int tmp1 = -2147483647;
@@ -569,8 +528,7 @@ START_TEST(add_test_25)
 }
 END_TEST
 
-START_TEST(add_test_26)
-{
+START_TEST(add_test_26) {
   int tmp1 = 4294967295;
   s21_decimal dec1 = {{tmp1, tmp1, tmp1, 0}};
   s21_decimal dec2 = {{1, 0, 0, 0}};
@@ -580,8 +538,7 @@ START_TEST(add_test_26)
 }
 END_TEST
 
-START_TEST(add_test_27)
-{
+START_TEST(add_test_27) {
   int tmp1 = 4294967295;
   float tmp2 = pow(2, 31);
   s21_decimal dec1 = {{tmp1, tmp1, tmp1, tmp2}};
@@ -592,8 +549,7 @@ START_TEST(add_test_27)
 }
 END_TEST
 
-START_TEST(add_test_28)
-{
+START_TEST(add_test_28) {
   float float_a = -10758.218750;
   float float_b = 6268.843750;
 
@@ -618,8 +574,7 @@ START_TEST(add_test_28)
   ck_assert_float_eq_tol(got_float, float_res, 1e-06);
 }
 
-START_TEST(add_test_29)
-{
+START_TEST(add_test_29) {
   s21_decimal src1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
   s21_decimal src2 = {0};
   float a = 0.01448;
@@ -630,8 +585,7 @@ START_TEST(add_test_29)
 }
 END_TEST
 
-START_TEST(add_test_30)
-{
+START_TEST(add_test_30) {
   s21_decimal src1 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(INT_MAX)}};
   s21_decimal src2 = {0};
   float a = -0.01448;
@@ -642,8 +596,7 @@ START_TEST(add_test_30)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_0)
-{
+START_TEST(s21_test_decimal_add_0) {
   s21_decimal c = {{5, 0, 0, 0}};
   s21_decimal d = {{5, 0, 0, 0}};
   s21_decimal etalon = {{10, 0, 0, 0}};
@@ -660,8 +613,7 @@ START_TEST(s21_test_decimal_add_0)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_1)
-{
+START_TEST(s21_test_decimal_add_1) {
   s21_decimal c = {{100, 0, 0, 0}};
   s21_decimal d = {{100, 0, 0, 0}};
   s21_decimal etalon = {{100, 0, 0, 0}};
@@ -678,8 +630,7 @@ START_TEST(s21_test_decimal_add_1)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_2)
-{
+START_TEST(s21_test_decimal_add_2) {
   s21_decimal c = {{2147483647, 0, 0, 0}};
   s21_decimal d = {{2147483647, 0, 0, 0}};
   s21_decimal etalon = {{4294967294, 0, 0, 0}};
@@ -695,8 +646,7 @@ START_TEST(s21_test_decimal_add_2)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_3)
-{
+START_TEST(s21_test_decimal_add_3) {
   s21_decimal c = {{1000, 0, 0, 0}};
   s21_decimal d = {{1000, 0, 0, 0}};
   s21_decimal etalon = {{2000, 0, 0, 0}};
@@ -712,8 +662,7 @@ START_TEST(s21_test_decimal_add_3)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_4)
-{
+START_TEST(s21_test_decimal_add_4) {
   s21_decimal c = {{1000, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1000, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -729,8 +678,7 @@ START_TEST(s21_test_decimal_add_4)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_5)
-{
+START_TEST(s21_test_decimal_add_5) {
   s21_decimal c = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{2, 0, 0, ~(INT_MAX)}};
@@ -746,8 +694,7 @@ START_TEST(s21_test_decimal_add_5)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_6)
-{
+START_TEST(s21_test_decimal_add_6) {
   s21_decimal c = {{0, 0, 0, 0}};
   s21_decimal d = {{0, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -766,8 +713,7 @@ START_TEST(s21_test_decimal_add_6)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_7)
-{
+START_TEST(s21_test_decimal_add_7) {
   s21_decimal c = {{1, 0, 0, 0}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{2, 0, 0, 0}};
@@ -786,8 +732,7 @@ START_TEST(s21_test_decimal_add_7)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_8)
-{
+START_TEST(s21_test_decimal_add_8) {
   s21_decimal c = {{1000, 0, 0, 0}};
   s21_decimal d = {{1000, 0, 0, 0}};
   s21_decimal etalon = {{2000, 0, 0, 0}};
@@ -806,8 +751,7 @@ START_TEST(s21_test_decimal_add_8)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_8_1)
-{
+START_TEST(s21_test_decimal_add_8_1) {
   s21_decimal c = {{INT_MAX, 0, 0, 0}};
   s21_decimal d = {{INT_MAX, 0, 0, 0}};
   s21_decimal etalon = {{4294967294, 0, 0, 0}};
@@ -826,8 +770,7 @@ START_TEST(s21_test_decimal_add_8_1)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_9)
-{
+START_TEST(s21_test_decimal_add_9) {
   s21_decimal c = {{INT_MAX, 0, 0, 0}};
   s21_decimal d = {{INT_MAX, 0, 0, 0}};
   s21_decimal etalon = {{UINT32_MAX - 1, 0, 0, 0}};
@@ -846,8 +789,7 @@ START_TEST(s21_test_decimal_add_9)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_10)
-{
+START_TEST(s21_test_decimal_add_10) {
   s21_decimal c = {{UINT32_MAX, 0, 0, 0}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{0, 1, 0, 0}};
@@ -871,8 +813,7 @@ START_TEST(s21_test_decimal_add_10)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_11)
-{
+START_TEST(s21_test_decimal_add_11) {
   s21_decimal c = {{0, UINT_MAX - 1, 0, 0}};
   s21_decimal d = {{0, 1, 0, 0}};
   s21_decimal etalon = {{0, UINT_MAX, 0, 0}};
@@ -891,8 +832,7 @@ START_TEST(s21_test_decimal_add_11)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_12)
-{
+START_TEST(s21_test_decimal_add_12) {
   s21_decimal c = {{0, 0, UINT_MAX - 1, 0}};
   s21_decimal d = {{0, 0, 1, 0}};
   s21_decimal etalon = {{0, 0, UINT_MAX, 0}};
@@ -911,8 +851,7 @@ START_TEST(s21_test_decimal_add_12)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_13)
-{
+START_TEST(s21_test_decimal_add_13) {
   s21_decimal c = {{0, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{0, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{0, 0, 0, ~(INT_MAX)}};
@@ -931,8 +870,7 @@ START_TEST(s21_test_decimal_add_13)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_14)
-{
+START_TEST(s21_test_decimal_add_14) {
   s21_decimal c = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -951,8 +889,7 @@ START_TEST(s21_test_decimal_add_14)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_15)
-{ // -1 + (-1) = -2
+START_TEST(s21_test_decimal_add_15) { // -1 + (-1) = -2
   s21_decimal c = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{2, 0, 0, ~(INT_MAX)}};
@@ -976,8 +913,7 @@ START_TEST(s21_test_decimal_add_15)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_16)
-{
+START_TEST(s21_test_decimal_add_16) {
   s21_decimal c = {{11, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{0, 0, 0, 0}};
   s21_decimal etalon = {{11, 0, 0, EXPONENT_PLUS_1}};
@@ -996,8 +932,7 @@ START_TEST(s21_test_decimal_add_16)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_17)
-{
+START_TEST(s21_test_decimal_add_17) {
   s21_decimal c = {{11, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{21, 0, 0, EXPONENT_PLUS_1}};
@@ -1021,8 +956,7 @@ START_TEST(s21_test_decimal_add_17)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_18)
-{
+START_TEST(s21_test_decimal_add_18) {
   s21_decimal c = {{111, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{121, 0, 0, EXPONENT_PLUS_1}};
@@ -1046,8 +980,7 @@ START_TEST(s21_test_decimal_add_18)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_19)
-{
+START_TEST(s21_test_decimal_add_19) {
   s21_decimal c = {{111, 0, 0, EXPONENT_PLUS_2}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{1111, 0, 0, EXPONENT_PLUS_2}};
@@ -1071,8 +1004,7 @@ START_TEST(s21_test_decimal_add_19)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_20)
-{
+START_TEST(s21_test_decimal_add_20) {
   s21_decimal c = {0};
   c.bits[0] = 0b11111111111111111111111111111110;
   c.bits[1] = 0b00000000000000000000000000000000;
@@ -1103,8 +1035,7 @@ START_TEST(s21_test_decimal_add_20)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_21)
-{
+START_TEST(s21_test_decimal_add_21) {
   s21_decimal c = {{UINT32_MAX - 1, UINT32_MAX, 0, 0}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{UINT32_MAX, UINT32_MAX, 0, 0}};
@@ -1128,8 +1059,7 @@ START_TEST(s21_test_decimal_add_21)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_25)
-{
+START_TEST(s21_test_decimal_add_25) {
   s21_decimal c = {{0b00000000000000000001100101111001, 0, 0, 0}};
   s21_decimal d = {{0b00000000000000010010000110001001, 0, 0, 0}};
   s21_decimal etalon = {{0b00000000000000010011101100000010, 0, 0, 0}};
@@ -1148,8 +1078,7 @@ START_TEST(s21_test_decimal_add_25)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_26)
-{
+START_TEST(s21_test_decimal_add_26) {
   s21_decimal c = {{0b10001001111001111111111111111111,
                     0b10001010110001110010001100000100, 0, 0}};
   s21_decimal d = {{0b00000000000000000000000000000001, 0, 0, 0}};
@@ -1170,8 +1099,7 @@ START_TEST(s21_test_decimal_add_26)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_27)
-{
+START_TEST(s21_test_decimal_add_27) {
   s21_decimal c = {{UINT_MAX, UINT_MAX, 0, 0}};
   s21_decimal d = {{0b00000000000000000000000000000001, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 1, 0}};
@@ -1190,8 +1118,7 @@ START_TEST(s21_test_decimal_add_27)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_28)
-{
+START_TEST(s21_test_decimal_add_28) {
   s21_decimal c = {
       {0b10000010111000100101101011101101, 0b11111001111010000010010110101101,
        0b10110000001111101111000010010100, 0b10000000000011100000000000000000}};
@@ -1223,8 +1150,7 @@ START_TEST(s21_test_decimal_add_28)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_29)
-{
+START_TEST(s21_test_decimal_add_29) {
   s21_decimal c = {
       {0b10000010111000100101101011101101, 0b11111001111010000010010110101101,
        0b10110000001111101111000010010100, 0b10000000000011100000000000000000}};
@@ -1254,8 +1180,7 @@ START_TEST(s21_test_decimal_add_29)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_30)
-{
+START_TEST(s21_test_decimal_add_30) {
   s21_decimal src1, src2, origin;
   src1.bits[0] = 0b01001110111001000011100101110110;
   src1.bits[1] = 0b01001011001101011010000111011001;
@@ -1283,14 +1208,13 @@ START_TEST(s21_test_decimal_add_30)
   ck_assert_int_eq(origin.bits[2], result.bits[2]);
   ck_assert_int_eq(origin.bits[3], result.bits[3]);
 
-  int equal = s21_is_equal(
-      result, origin); // Возвращаемое значение: 0 - FALSE 1 - TRUE
+  int equal =
+      s21_is_equal(result, origin); // Возвращаемое значение: 0 - FALSE 1 - TRUE
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_0)
-{
+START_TEST(s21_test_decimal_add_simple_0) {
   s21_decimal c = {{0, 0, 0, 0}};
   s21_decimal d = {{0, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -1309,8 +1233,7 @@ START_TEST(s21_test_decimal_add_simple_0)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_1)
-{
+START_TEST(s21_test_decimal_add_simple_1) {
   s21_decimal c = {{1, 0, 0, 0}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{2, 0, 0, 0}};
@@ -1329,8 +1252,7 @@ START_TEST(s21_test_decimal_add_simple_1)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_2)
-{
+START_TEST(s21_test_decimal_add_simple_2) {
   s21_decimal c = {{1000, 0, 0, 0}};
   s21_decimal d = {{1000, 0, 0, 0}};
   s21_decimal etalon = {{2000, 0, 0, 0}};
@@ -1349,8 +1271,7 @@ START_TEST(s21_test_decimal_add_simple_2)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_3)
-{
+START_TEST(s21_test_decimal_add_simple_3) {
   s21_decimal c = {{INT_MAX, 0, 0, 0}};
   s21_decimal d = {{INT_MAX, 0, 0, 0}};
   s21_decimal etalon = {{4294967294, 0, 0, 0}};
@@ -1369,8 +1290,7 @@ START_TEST(s21_test_decimal_add_simple_3)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_4)
-{
+START_TEST(s21_test_decimal_add_simple_4) {
   s21_decimal c = {{INT_MAX, 0, 0, 0}};
   s21_decimal d = {{INT_MAX, 0, 0, 0}};
   s21_decimal etalon = {{UINT32_MAX - 1, 0, 0, 0}};
@@ -1389,8 +1309,7 @@ START_TEST(s21_test_decimal_add_simple_4)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_5)
-{
+START_TEST(s21_test_decimal_add_simple_5) {
   s21_decimal c = {{UINT_MAX, 0, 0, 0}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{0, 1, 0, 0}};
@@ -1414,8 +1333,7 @@ START_TEST(s21_test_decimal_add_simple_5)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_6)
-{
+START_TEST(s21_test_decimal_add_simple_6) {
   s21_decimal c = {{0, UINT_MAX - 1, 0, 0}};
   s21_decimal d = {{0, 1, 0, 0}};
   s21_decimal etalon = {{0, UINT_MAX, 0, 0}};
@@ -1434,8 +1352,7 @@ START_TEST(s21_test_decimal_add_simple_6)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_7)
-{
+START_TEST(s21_test_decimal_add_simple_7) {
   s21_decimal c = {{0, 0, UINT_MAX - 1, 0}};
   s21_decimal d = {{0, 0, 1, 0}};
   s21_decimal etalon = {{0, 0, UINT_MAX, 0}};
@@ -1454,8 +1371,7 @@ START_TEST(s21_test_decimal_add_simple_7)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_8)
-{
+START_TEST(s21_test_decimal_add_simple_8) {
   s21_decimal c = {{0, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{0, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{0, 0, 0, ~(INT_MAX)}};
@@ -1474,8 +1390,7 @@ START_TEST(s21_test_decimal_add_simple_8)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_9)
-{
+START_TEST(s21_test_decimal_add_simple_9) {
   s21_decimal c = {{1, 0, 0, 0b10000000000000000000000000000000}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -1499,8 +1414,7 @@ START_TEST(s21_test_decimal_add_simple_9)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_10)
-{ // -1 + (-1) = -2
+START_TEST(s21_test_decimal_add_simple_10) { // -1 + (-1) = -2
   s21_decimal c = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{2, 0, 0, ~(INT_MAX)}};
@@ -1523,8 +1437,7 @@ START_TEST(s21_test_decimal_add_simple_10)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_11)
-{
+START_TEST(s21_test_decimal_add_simple_11) {
   s21_decimal c = {{11, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{0, 0, 0, 0}};
   s21_decimal etalon = {{11, 0, 0, EXPONENT_PLUS_1}};
@@ -1543,8 +1456,7 @@ START_TEST(s21_test_decimal_add_simple_11)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_12)
-{
+START_TEST(s21_test_decimal_add_simple_12) {
   s21_decimal c = {{11, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{21, 0, 0, EXPONENT_PLUS_1}};
@@ -1563,8 +1475,7 @@ START_TEST(s21_test_decimal_add_simple_12)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_13)
-{
+START_TEST(s21_test_decimal_add_simple_13) {
   s21_decimal c = {{111, 0, 0, EXPONENT_PLUS_1}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{121, 0, 0, EXPONENT_PLUS_1}};
@@ -1588,8 +1499,7 @@ START_TEST(s21_test_decimal_add_simple_13)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_14)
-{
+START_TEST(s21_test_decimal_add_simple_14) {
   s21_decimal c = {{111, 0, 0, EXPONENT_PLUS_2}};
   s21_decimal d = {{1, 0, 0, 0}};
   s21_decimal etalon = {{1111, 0, 0, EXPONENT_PLUS_2}};
@@ -1613,8 +1523,7 @@ START_TEST(s21_test_decimal_add_simple_14)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_20)
-{
+START_TEST(s21_test_decimal_add_simple_20) {
   s21_decimal c = {{0b00000000000000000001100101111001, 0, 0, 0}};
   s21_decimal d = {{0b00000000000000010010000110001001, 0, 0, 0}};
   s21_decimal etalon = {{0b00000000000000010011101100000010, 0, 0, 0}};
@@ -1633,8 +1542,7 @@ START_TEST(s21_test_decimal_add_simple_20)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_21)
-{
+START_TEST(s21_test_decimal_add_simple_21) {
   s21_decimal c = {{0b10001001111001111111111111111111,
                     0b10001010110001110010001100000100, 0, 0}};
   s21_decimal d = {{0b00000000000000000000000000000001, 0, 0, 0}};
@@ -1655,8 +1563,7 @@ START_TEST(s21_test_decimal_add_simple_21)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_22)
-{
+START_TEST(s21_test_decimal_add_simple_22) {
   s21_decimal c = {{UINT_MAX, UINT_MAX, 0, 0}};
   s21_decimal d = {{0b00000000000000000000000000000001, 0, 0, 0}};
   s21_decimal etalon = {{0, 0, 1, 0}};
@@ -1675,8 +1582,7 @@ START_TEST(s21_test_decimal_add_simple_22)
 }
 END_TEST
 
-START_TEST(s21_test_decimal_add_simple_23)
-{
+START_TEST(s21_test_decimal_add_simple_23) {
   s21_decimal c = {
       {0b10000010111000100101101011101101, 0b11111001111010000010010110101101,
        0b10110000001111101111000010010100, 0b10000000000011100000000000000000}};
@@ -1704,8 +1610,7 @@ START_TEST(s21_test_decimal_add_simple_23)
 }
 END_TEST
 
-START_TEST(s21_add_max_31)
-{
+START_TEST(s21_add_max_31) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1721,8 +1626,7 @@ START_TEST(s21_add_max_31)
 }
 END_TEST
 
-START_TEST(s21_add_max_32)
-{
+START_TEST(s21_add_max_32) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1738,8 +1642,7 @@ START_TEST(s21_add_max_32)
 }
 END_TEST
 
-START_TEST(s21_add_max_33)
-{
+START_TEST(s21_add_max_33) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1755,8 +1658,7 @@ START_TEST(s21_add_max_33)
 }
 END_TEST
 
-START_TEST(s21_add_max_34)
-{
+START_TEST(s21_add_max_34) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1782,8 +1684,7 @@ START_TEST(s21_add_max_34)
 }
 END_TEST
 
-START_TEST(s21_add_max_35)
-{
+START_TEST(s21_add_max_35) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1809,8 +1710,7 @@ START_TEST(s21_add_max_35)
 }
 END_TEST
 
-START_TEST(s21_add_max_36)
-{
+START_TEST(s21_add_max_36) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b11111111111111111111111111111111;
   src1.bits[1] = 0b11111111111111111111111111111111;
@@ -1836,8 +1736,7 @@ START_TEST(s21_add_max_36)
 }
 END_TEST
 
-START_TEST(add_test_37)
-{
+START_TEST(add_test_37) {
   s21_decimal src1 = {0};
   src1.bits[0] = 0b00000000000000000000001111111111;
   src1.bits[1] = 0b00000000000000000000000000000000;
@@ -1863,8 +1762,7 @@ START_TEST(add_test_37)
 }
 END_TEST
 
-Suite *s21_add_suite(void)
-{
+Suite *s21_add_suite(void) {
   Suite *s = suite_create("suite_add");
   TCase *tc = tcase_create("case_add");
 

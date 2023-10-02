@@ -12,7 +12,6 @@ void negate_test_function(float n, float accuracy) {
   return;
 }
 
-
 START_TEST(negate_4) {
   float n = s21_rand_r(-8388608, 8388608);
   negate_test_function(n, 10);
