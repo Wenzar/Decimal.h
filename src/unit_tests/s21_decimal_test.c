@@ -11,6 +11,16 @@ int main(void)
       s21_floor_suite(),
       s21_round_suite(),
       s21_from_decimal_to_float_suite(),
+      s21_suite_from_decimal_to_int(),
+      s21_suite_from_int_to_decimal(),
+      s21_from_float_to_decimal_test(),
+      s21_suite_is_greater_or_equal(),
+      s21_suite_is_greater(),
+      s21_suite_is_less_or_equal(),
+      s21_suite_is_less(),
+      s21_suite_is_not_equal(),
+      s21_suite_truncate(),
+      s21_suite_negate(),
       NULL};
   for (Suite **testcase = list_testcases; *testcase != NULL; testcase++)
   {

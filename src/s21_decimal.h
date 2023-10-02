@@ -6,6 +6,8 @@
 #include <math.h>
 
 #define MY_INT_MAX 2147483648
+#define MAX_DEC_FLOAT powf(2.0f, 96.0f) - 1.0
+#define MIN_DEC_FLOAT -powf(2.0f, 96.0f) + 1.0
 
 typedef struct
 {

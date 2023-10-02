@@ -15,6 +15,16 @@ Suite *s21_is_equal_suite(void);
 Suite *s21_floor_suite(void);
 Suite* s21_round_suite(void);
 Suite *s21_from_decimal_to_float_suite(void);
+Suite *s21_suite_from_decimal_to_int(void);
+Suite *s21_suite_from_int_to_decimal(void);
+Suite *s21_from_float_to_decimal_test(void);
+Suite *s21_suite_is_greater_or_equal(void);
+Suite *s21_suite_is_greater(void);
+Suite *s21_suite_is_less_or_equal(void);
+Suite *s21_suite_is_less(void);
+Suite *s21_suite_is_not_equal(void);
+Suite *s21_suite_truncate(void);
+Suite *s21_suite_negate(void);
 
 void run_testcase(Suite *testcase);
 
