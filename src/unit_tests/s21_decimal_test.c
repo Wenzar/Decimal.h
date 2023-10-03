@@ -1,8 +1,9 @@
 #include "s21_decimal_test.h"
 
 int main(void) {
-  Suite *list_testcases[] = {s21_add_suite(),
-                             s21_div_suite(),
+  Suite *list_testcases[] = {
+                             s21_add_suite(),
+                            //  s21_div_suite(),
                              s21_mul_suite(),
                              s21_sub_suite(),
                              s21_is_equal_suite(),

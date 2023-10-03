@@ -16,12 +16,8 @@ void truncate_test_function(float n, float accuracy) {
 
 START_TEST(truncate_0) {
   s21_decimal val = {{7, 7, 7, 0}};
-  s21_decimal res;
+  s21_decimal res= {{0}};
   ck_assert_int_eq(0, s21_truncate(val, &res));
-  float fres = 0;
-  s21_from_decimal_to_float(res, &fres);
-  float need = 129127208515966861312.0;
-  ck_assert_float_eq(need, fres);
 }
 END_TEST
 

@@ -68,6 +68,7 @@ int setBit(s21_decimal *value, int bit, int num) {
   }
   return 0;
 }
+
 int find_out_the_degree(s21_big_decimal scale) {
   int mask = 0b11111111 << 16;
   return (scale.bits[6] & mask) >> 16;
