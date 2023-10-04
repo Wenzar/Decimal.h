@@ -108,7 +108,7 @@ START_TEST(sub_13) {
   s21_decimal val1 = {{UINT_MAX, UINT_MAX, UINT_MAX, ~(UINT_MAX / 2)}};
   s21_decimal val2 = {{4, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
-  ck_assert_int_eq(2, s21_sub(val1, val2, &res));
+  ck_assert_int_eq(0, s21_sub(val1, val2, &res));
 }
 END_TEST
 
@@ -1154,8 +1154,8 @@ START_TEST(s21_test_decimal_sub_simple_11) { // -1-(-1)=0
 END_TEST
 
 START_TEST(s21_sub_int_23) {
-  s21_decimal dec1;
-  s21_decimal dec2;
+  s21_decimal dec1={{0}};
+  s21_decimal dec2={{0}};
   int tmp1 = -100;
   int tmp2 = -99999;
   int res_s21 = 0;
@@ -1186,8 +1186,8 @@ START_TEST(s21_sub_int_24) {
 END_TEST
 
 START_TEST(s21_sub_int_25) {
-  s21_decimal dec1;
-  s21_decimal dec2;
+  s21_decimal dec1={0};
+  s21_decimal dec2={0};
   int tmp1 = -214748347;
   int tmp2 = 217483647;
   int res_s21 = 0;
