@@ -1,3 +1,7 @@
+#include <check.h>
+#include <limits.h>
+#include <stdio.h>
+
 #include "s21_HELP_FUNCTIONS.c"
 #include "s21_add.c"
 #include "s21_decimal.h"
@@ -5,9 +9,6 @@
 #include "s21_from_float_to_decimal.c"
 #include "s21_from_int_to_decimal.c"
 #include "s21_sub.c"
-#include <check.h>
-#include <limits.h>
-#include <stdio.h>
 
 int main() {
   //   s21_decimal src1 = {0};

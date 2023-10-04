@@ -11,7 +11,6 @@ int check_error(s21_decimal value_1, s21_decimal value_2) {
   int error = 0;
   for (int i = 96; i <= 127; i++) {
     if (i <= 110 || (i >= 119 && i <= 126)) {
-
       if (getBit(value_1, i) || getBit(value_2, i)) {
         error = 1;
       }
@@ -312,9 +311,7 @@ void big_shift_right(s21_big_decimal *value, int step) {
     value->bits[5] = value->bits[5] >> 1;
     for (int big_bit = 4, number = 1; big_bit >= 0; big_bit--, number++) {
       if (count) {
-
         if (big_getBit(*value, 32 * big_bit)) {
-
           count = 1;
         } else {
           count = 0;
@@ -322,7 +319,6 @@ void big_shift_right(s21_big_decimal *value, int step) {
         value->bits[big_bit] = value->bits[big_bit] >> 1;
         big_setBit_by_shift(value, 32 * (big_bit + 1) - 1, 1);
       } else {
-
         if (big_getBit(*value, 32 * big_bit)) {
           count = 1;
         } else {
@@ -495,9 +491,7 @@ int bank_round(s21_big_decimal value, s21_big_decimal *result) {
   // find_out_the_degree(value),value.bits[5],value.bits[4],value.bits[3],value.bits[2],value.bits[1],value.bits[0]);
   int error = 0;
   if (check_dop_decimal(value)) {
-
     while (check_dop_decimal(value) && find_out_the_degree(value) != 0) {
-
       demotion_scale(&value);
     }
     if (check_dop_decimal(value)) {

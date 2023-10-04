@@ -5,7 +5,6 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 
   int fatal_error = check_error(value_1, value_2);
   if (!(fatal_error)) {
-
     s21_big_decimal current_value_1 = {0};
     s21_big_decimal current_value_2 = {0};
     s21_big_decimal big_result = {0};
@@ -41,7 +40,6 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
           big_uninitilization(big_result, result);
         } else if (big_getBit(current_value_1, 223) &&
                    !big_getBit(current_value_2, 223)) {
-
           difference(current_value_1, current_value_2, &big_result);
           // printf("\nRESULT HERE %u %u %u %u %u %u %u\n",
           // find_out_the_degree(big_result),big_result.bits[5],big_result.bits[4],big_result.bits[3],big_result.bits[2],big_result.bits[1],big_result.bits[0]);

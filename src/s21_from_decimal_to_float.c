@@ -1,7 +1,6 @@
 #include "s21_decimal.h"
 
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
-
   s21_big_decimal our_copy = {0};
   big_initialization(src, &our_copy);
   // printf("\n%u %u %u %u\n\n", src.bits[3], src.bits[2], src.bits[1],
