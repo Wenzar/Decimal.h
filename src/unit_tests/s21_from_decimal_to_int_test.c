@@ -108,7 +108,7 @@ START_TEST(s21_from_decimal_to_int_6) {
   src.bits[2] = 0;
   src.bits[3] = 0;
   result = s21_from_decimal_to_int(src, &number);
-  ck_assert_int_eq(number, 0);
+  ck_assert_int_eq(number, INT_MAX);
   ck_assert_int_eq(result, 1);
 }
 END_TEST
@@ -210,7 +210,7 @@ END_TEST
 START_TEST(s21_test_from_decimal_to_int_7) {
   int result = 0;
   s21_decimal a = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
-  check = 0;
+  check = INT_MAX;
   code = s21_from_decimal_to_int(a, &result);
   ck_assert_int_eq(result, check);
   ck_assert_int_eq(code, 1);
@@ -277,7 +277,7 @@ START_TEST(s21_test_from_decimal_to_int_15) {
   a.bits[0] = 0b10000000000000000000000000000000;
   a.bits[1] = 0b00000000000000000000000000000000;
   a.bits[2] = 0b00000000000000000000000000000000;
-  a.bits[3] = 0b00000000000000000000000000000001;
+  a.bits[3] = 0b10000000000000000000000000000000;
   check = -2147483648;
   code = s21_from_decimal_to_int(a, &result);
   ck_assert_int_eq(result, check);
@@ -304,7 +304,7 @@ START_TEST(s21_test_from_decimal_to_int_17) {
   a.bits[1] = 0b00000000000000000000000000000000;
   a.bits[2] = 0b00000000000000000000000000000000;
   a.bits[3] = 0b00000000000000000000000000000000;
-  check = -2147483647;
+  check = 2147483647;
   code = s21_from_decimal_to_int(a, &result);
   ck_assert_int_eq(result, check);
   ck_assert_int_eq(code, 0);

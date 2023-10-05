@@ -636,3 +636,16 @@ int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value
   result->bits[6] = scale;
   return tmp_value_1.bits[0];
 }
+
+int error_scale (s21_decimal value){
+  int error=0;
+  for(int i=0; i<32; i++){
+    if(i<16&&getBit(value,i+(96))){
+      error=1;
+    }
+    if(i>23&&i<31&&getBit(value,i+(96))){
+      error=1;
+    }
+  }
+  return error;
+}

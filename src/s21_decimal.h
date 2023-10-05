@@ -98,5 +98,6 @@ float s21_rand_r(float a, float b);
 int my_remainder (s21_big_decimal value);
 int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
                          s21_big_decimal *result);
+                         int error_scale (s21_decimal value);
 
 #endif
