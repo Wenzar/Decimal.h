@@ -13,6 +13,9 @@
 #include "s21_is_equal.c"
 #include "s21_floor.c"
 #include "s21_round.c"
+#include "s21_is_less_or_equal.c"
+#include "s21_is_less.c"
+#include "s21_is_greater.c"
 int main() {
 //      s21_decimal src1 = {0};
 //   src1.bits[0] = 0b10101111110010001101100101011111;
@@ -45,20 +48,27 @@ int main() {
 //   origin.bits[1] = 0b00000000000000000000000000000000;
 //   origin.bits[2] = 0b00000000000000000000000000000000;
 //   origin.bits[3] = 0b00000000000000000000000000000000;
-s21_decimal src;
- src.bits[0] = INT_MAX;
-  src.bits[1] = INT_MAX;
-  src.bits[2] = INT_MAX;
-  src.bits[3] = INT_MAX;
-  int error=0;
-  int res=0;
-  error= s21_from_decimal_to_int(src,&res);
+   int a = 0;
+  int b = 0;
+  s21_decimal _a = {{0}};
+  s21_decimal _b = {{0}};
+  s21_from_int_to_decimal(a, &_a);
+  s21_from_int_to_decimal(b, &_b);
+
+  int error=s21_is_greater(_a, _b);
   printf("\nERROR=%d\n", error);
-  printf("RES= %u", res);
- 
-printf("\nDEC1 sign:%u scale:%u %u %u %u\n", src.bits[3] >> 31,
-         small_find_out_the_degree(src), src.bits[2], src.bits[1],
-         src.bits[0]);
+//   printf("RES= %u", res);
+ printf("\nDEC1 sign:%u scale:%u %u %u %u\n", _a.bits[3] >> 31,
+         small_find_out_the_degree(_a), _a.bits[2], _a.bits[1],
+         _a.bits[0]);
+         printf("\nDEC1 sign:%u scale:%u %u %u %u\n", _b.bits[3] >> 31,
+         small_find_out_the_degree(_b), _b.bits[2], _b.bits[1],
+         _b.bits[0]);
+
+         printf("\na=%d b=%d", a,b);
+// printf("\nDEC1 sign:%u scale:%u %u %u %u\n", src.bits[3] >> 31,
+//          small_find_out_the_degree(src), src.bits[2], src.bits[1],
+//          src.bits[0]);
 //   printf("\nDEC1 sign:%u scale:%u %u %u %u\n", src1.bits[3] >> 31,
 //          small_find_out_the_degree(src1), src1.bits[2], src1.bits[1],
 //          src1.bits[0]);

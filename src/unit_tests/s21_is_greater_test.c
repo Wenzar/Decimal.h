@@ -102,7 +102,7 @@ END_TEST
 START_TEST(greater_4) {
   int num1 = 0;
   int num2 = 0;
-  s21_decimal dec1, dec2;
+  s21_decimal dec1={0}, dec2={0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater(dec1, dec2);
@@ -113,7 +113,7 @@ END_TEST
 START_TEST(greater_5) {
   int num1 = 3;
   int num2 = 9;
-  s21_decimal dec1, dec2;
+   s21_decimal dec1={0}, dec2={0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater(dec1, dec2);

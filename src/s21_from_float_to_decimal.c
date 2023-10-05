@@ -3,6 +3,10 @@
 #include "s21_decimal.h"
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
+  dst->bits[0]=0;
+  dst->bits[1]=0;
+  dst->bits[2]=0;
+  dst->bits[3]=0;
   int return_value = 0;
   if (src < -1e30) {
     return_value = 2;

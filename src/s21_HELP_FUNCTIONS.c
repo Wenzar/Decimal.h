@@ -649,3 +649,11 @@ int error_scale (s21_decimal value){
   }
   return error;
 }
+
+int check_zero_decimal(s21_decimal value){
+  int result=0;
+  if(value.bits[0]==0&&value.bits[1]==0&&value.bits[2]==0){
+    result=1;
+  }
+  return result;
+}
