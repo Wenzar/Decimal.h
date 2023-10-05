@@ -89,5 +89,8 @@ int mantis_is_greater_or_equal(s21_big_decimal value_1,
 void shift_left(s21_big_decimal *value, int step);
 int countFractionalDigits(float num);
 float s21_rand_r(float a, float b);
+int my_remainder (s21_big_decimal value);
+int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
+                         s21_big_decimal *result);
 
 #endif

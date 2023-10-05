@@ -7,6 +7,7 @@ s21_big_decimal one_big_decimal = {{1, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_ten = {{10, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_decimal_null = {{0, 0, 0, 0, 0, 0, 0}};
 
+
 int check_error(s21_decimal value_1, s21_decimal value_2) {
   int error = 0;
   for (int i = 96; i <= 127; i++) {
@@ -597,4 +598,41 @@ float s21_rand_r(float a, float b) {
   float m = (float)rand() / RAND_MAX;
   float num = a + m * (b - a);
   return num;
+}
+
+int my_remainder (s21_big_decimal value){
+  
+  
+  return remainder_division_by_integer(value,big_ten,&value);
+}
+
+int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
+                         s21_big_decimal *result) {
+  s21_big_decimal tmp_one_decimal = one_big_decimal;
+  s21_big_decimal tmp_result = value_2;
+  s21_big_decimal copy_product = big_decimal_null;
+  s21_big_decimal copy_result = big_decimal_null;
+  s21_big_decimal tmp_value_1 = value_1;
+  s21_big_decimal product = big_decimal_null;
+  int scale = value_1.bits[6];
+  while (mantis_is_less(product, value_1) &&
+         mantis_is_greater_or_equal(tmp_value_1, value_2)) {
+    while (mantis_is_less(tmp_result, tmp_value_1)) {
+      shift_left(&tmp_one_decimal, 1);
+      multiplication(value_2, tmp_one_decimal, &tmp_result);
+    }
+    if (mantis_is_greater(tmp_result, tmp_value_1)) {
+      big_shift_right(&tmp_one_decimal, 1);
+    }
+    big_addition(copy_result, tmp_one_decimal, &copy_result);
+    multiplication(tmp_one_decimal, value_2, &copy_product);
+    multiplication(copy_result, value_2, &product);
+    difference(tmp_value_1, copy_product, &tmp_value_1);
+    tmp_result = big_decimal_null;
+    tmp_one_decimal = one_big_decimal;
+    copy_product = big_decimal_null;
+  }
+  *result = copy_result;
+  result->bits[6] = scale;
+  return tmp_value_1.bits[0];
 }
