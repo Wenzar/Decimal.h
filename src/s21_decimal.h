@@ -17,6 +17,12 @@ typedef struct {
   unsigned int bits[7];
 } s21_big_decimal;
 
+typedef union {
+  int uint_number;
+  float float_number;
+} float_bits;
+
+
 extern s21_decimal ten;
 extern s21_decimal decimal_null;
 extern s21_decimal one_decimal;

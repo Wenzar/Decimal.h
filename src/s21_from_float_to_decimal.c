@@ -3,34 +3,36 @@
 #include "s21_decimal.h"
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
-  int sign = 0;
-  if (src < 0) {
-    src = -src;
-    setBit(dst, 127, 1);
-    sign = 1;
+  int return_value = 0;
+  if (src < -1e30) {
+    return_value = 2;
   }
-
-  int error = 0;
-  int int_part = (int)src;
-  float fractional_part = src - int_part;
-
-  int scale = 0;
-
-  while (fractional_part != 0.0 && scale < countFractionalDigits(src)) {
-    fractional_part *= 10;
-    int digit = (int)roundf(fractional_part);
-    dst->bits[0] = dst->bits[0] * 10 + digit;
-    fractional_part -= digit;
-    scale++;
+  else if(isinf(src) || isnan(src)) {
+    return_value = 1;
   }
-
-  dst->bits[3] = scale << 16;
-  s21_decimal new = {0};
-  s21_decimal copy_res = {0};
-  new.bits[0] = int_part;
-  s21_add(*dst, new, &copy_res);
-  *dst = copy_res;
-  setBit(dst, 127, sign);
-  // printf("\nres: \n%u %u\n", dst->bits[1], dst->bits[0]);
-  return error;
+ else {
+    if (src != 0) {
+      int sign = *(int *)&src >> 31;
+      int exp = ((*(int *)&src & ~0x80000000) >> 23) - 127;
+      double buffer = (double)fabs(src);
+      int off = 0;
+      for (; off < 28 && (int)buffer / (int)pow(2, 21) == 0; buffer *= 10, off++) {
+      }
+      buffer = round(buffer);
+      if (off <= 28 && (exp > -94 && exp < 96)) {
+        float_bits mantis = {0};
+        buffer = (float)buffer;
+        for (; fmod(buffer, 10) == 0 && off > 0; off--, buffer /= 10) {
+        }
+        mantis.float_number = buffer;
+        exp = ((*(int *)&mantis.float_number & ~0x80000000) >> 23) - 127;
+        dst->bits[exp / 32] |= 1 << exp % 32;
+        for (int i = exp - 1, j = 22; j >= 0; i--, j--)
+          if ((mantis.uint_number & (1 << j)) != 0)
+            dst->bits[i / 32] |= 1 << i % 32;
+        dst->bits[3] = (sign << 31) | (off << 16);
+      }
+    }
+  }
+  return return_value;
 }
