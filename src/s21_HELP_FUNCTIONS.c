@@ -7,7 +7,6 @@ s21_big_decimal one_big_decimal = {{1, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_ten = {{10, 0, 0, 0, 0, 0, 0}};
 s21_big_decimal big_decimal_null = {{0, 0, 0, 0, 0, 0, 0}};
 
-
 int check_error(s21_decimal value_1, s21_decimal value_2) {
   int error = 0;
   for (int i = 96; i <= 127; i++) {
@@ -258,6 +257,7 @@ void division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
   s21_big_decimal tmp_value_1 = value_1;
   s21_big_decimal product = big_decimal_null;
   int scale = value_1.bits[6];
+
   while (mantis_is_less(product, value_1) &&
          mantis_is_greater_or_equal(tmp_value_1, value_2)) {
     while (mantis_is_less(tmp_result, tmp_value_1)) {
@@ -362,47 +362,7 @@ int shift_right(s21_decimal *value, int step) {
   }
   return error;
 }
-// void small_shift_left(s21_decimal *value, int step)
-// {
-//   int scale = value->bits[3];
-//   for (int i = 0; i < step; i++)
-//   {
-//     int count = 0;
-//     if (getBit(*value, 31))
-//     {
-//       count = 1;
-//     }
-//     else
-//     {
-//       count = 0;
-//     }
-//     value->bits[0] = value->bits[0] = value->bits[0] << 1;
-//     for (int big_bit = 2; big_bit <= 3; big_bit++)
-//     {
-//       if (getBit(*value, (32 * big_bit - 1)))
-//       {
-//         value->bits[big_bit - 1] = value->bits[big_bit - 1] =
-//             value->bits[big_bit - 1] << 1;
-//         if (count == 1)
-//         {
-//           setBit(value, (32 * (big_bit - 1)), 1);
-//         }
-//         count = 1;
-//       }
-//       else
-//       {
-//         value->bits[big_bit - 1] = value->bits[big_bit - 1] =
-//             value->bits[big_bit - 1] << 1;
-//         if (count == 1)
-//         {
-//           setBit(value, (32 * (big_bit - 1)), 1);
-//         }
-//         count = 0;
-//       }
-//     }
-//   }
-//   value->bits[3] = scale;
-// }
+
 void shift_left(s21_big_decimal *value, int step) {
   int scale = value->bits[6];
   for (int i = 0; i < step; i++) {
@@ -600,14 +560,13 @@ float s21_rand_r(float a, float b) {
   return num;
 }
 
-int my_remainder (s21_big_decimal value){
-  
-  
-  return remainder_division_by_integer(value,big_ten,&value);
+int my_remainder(s21_big_decimal value) {
+  return remainder_division_by_integer(value, big_ten, &value);
 }
 
-int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
-                         s21_big_decimal *result) {
+int remainder_division_by_integer(s21_big_decimal value_1,
+                                  s21_big_decimal value_2,
+                                  s21_big_decimal *result) {
   s21_big_decimal tmp_one_decimal = one_big_decimal;
   s21_big_decimal tmp_result = value_2;
   s21_big_decimal copy_product = big_decimal_null;
@@ -637,23 +596,40 @@ int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value
   return tmp_value_1.bits[0];
 }
 
-int error_scale (s21_decimal value){
-  int error=0;
-  for(int i=0; i<32; i++){
-    if(i<16&&getBit(value,i+(96))){
-      error=1;
+int error_scale(s21_decimal value) {
+  int error = 0;
+  for (int i = 0; i < 32; i++) {
+    if (i < 16 && getBit(value, i + (96))) {
+      error = 1;
     }
-    if(i>23&&i<31&&getBit(value,i+(96))){
-      error=1;
+    if (i > 23 && i < 31 && getBit(value, i + (96))) {
+      error = 1;
     }
   }
   return error;
 }
 
-int check_zero_decimal(s21_decimal value){
-  int result=0;
-  if(value.bits[0]==0&&value.bits[1]==0&&value.bits[2]==0){
-    result=1;
+int check_zero_decimal(s21_decimal value) {
+  int result = 0;
+  if (value.bits[0] == 0 && value.bits[1] == 0 && value.bits[2] == 0) {
+    result = 1;
   }
   return result;
 }
+
+void set_degree(s21_decimal *value, int degree) {
+  int minos = 0;
+  minos = get_minos(*value);
+  value->bits[3] = 0;
+  degree <<= 16;
+  value->bits[3] = degree | value->bits[3];
+  if (minos) {
+    set_minos(value);
+  }
+}
+
+void set_minos(s21_decimal *value) {
+  value->bits[3] = value->bits[3] | 1 << 31;
+}
+
+int get_minos(s21_decimal value) { return (value.bits[3] & 1 << 31) != 0; }

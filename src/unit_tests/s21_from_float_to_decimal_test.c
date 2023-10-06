@@ -732,6 +732,14 @@ START_TEST(float_to_decimal_56) {
 }
 END_TEST
 
+START_TEST(float_to_decimal_566) {
+  s21_decimal val;
+  float num = -1e30;
+  s21_from_float_to_decimal(num, &val);
+  ck_assert_int_eq(2, s21_from_float_to_decimal(num, &val));
+}
+END_TEST
+
 START_TEST(float_to_decimal_57) {
   s21_decimal val;
   float fl1 = 22.14836E+03;
@@ -968,6 +976,7 @@ Suite *s21_from_float_to_decimal_test(void) {
   tcase_add_test(tc, float_to_decimal_69);
   tcase_add_test(tc, float_to_decimal_70);
   tcase_add_test(tc, float_to_decimal_73);
+  tcase_add_test(tc, float_to_decimal_566);
 
   suite_add_tcase(s, tc);
   return s;

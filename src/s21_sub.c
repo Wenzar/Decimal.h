@@ -74,15 +74,14 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
       big_addition(current_value_1, current_value_2, &big_result);
       sub_return = bank_round(big_result, &big_result);
       big_uninitilization(big_result, result);
-    }
-    else if(big_getBit(current_value_1, 223) && !big_getBit(current_value_2, 223)) {
+    } else if (big_getBit(current_value_1, 223) &&
+               !big_getBit(current_value_2, 223)) {
       big_addition(current_value_1, current_value_2, &big_result);
       big_setBit(&big_result, 223, 1);
       sub_return = bank_round(big_result, &big_result);
       big_uninitilization(big_result, result);
-    }
-    else{
-    *result = decimal_null;
+    } else {
+      *result = decimal_null;
     }
   }
   return sub_return;

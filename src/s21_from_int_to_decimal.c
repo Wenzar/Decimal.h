@@ -9,7 +9,5 @@ int s21_from_int_to_decimal(int src, s21_decimal *dst) {
   }
   dst->bits[0] = src;
 
-  // printf("\nRESULT from_int_to_decimal %u %u %u %u \n", dst->bits[3],
-  //        dst->bits[2], dst->bits[1], dst->bits[0]);
   return error;
 }

@@ -28,4 +28,4 @@ Suite *s21_suite_negate(void);
 
 void run_testcase(Suite *testcase);
 
-#endif //  s21_decimal_TEST_H
+#endif  //  s21_decimal_TEST_H

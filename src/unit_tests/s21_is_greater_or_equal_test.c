@@ -99,7 +99,7 @@ END_TEST
 START_TEST(greater_or_equal_2) {
   int num1 = 2;
   int num2 = 1;
-  s21_decimal dec1, dec2;
+  s21_decimal dec1 = {{0}}, dec2 = {{0}};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater_or_equal(dec1, dec2);
@@ -121,7 +121,7 @@ END_TEST
 START_TEST(greater_or_equal_4) {
   int num1 = 0;
   int num2 = 0;
-  s21_decimal dec1, dec2;
+  s21_decimal dec1 = {{0}}, dec2 = {{0}};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater_or_equal(dec1, dec2);
@@ -132,7 +132,7 @@ END_TEST
 START_TEST(greater_or_equal_5) {
   int num1 = 3;
   int num2 = 9;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater_or_equal(dec1, dec2);
@@ -143,7 +143,7 @@ END_TEST
 START_TEST(greater_or_equal_6) {
   int num1 = -3;
   int num2 = -3;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater_or_equal(dec1, dec2);
@@ -154,7 +154,7 @@ END_TEST
 START_TEST(greater_or_equal_7) {
   int num1 = 10;
   int num2 = 3;
-  s21_decimal dec1, dec2;
+  s21_decimal dec1 = {{0}}, dec2 = {{0}};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater_or_equal(dec1, dec2);
@@ -219,26 +219,26 @@ END_TEST
 
 START_TEST(s21_greater_or_equal_13) {
   s21_decimal dec5 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
-  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //
+      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
+  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}};  //
   ck_assert_int_eq(s21_is_greater_or_equal(dec5, dec6), 1);
   ck_assert_int_eq(s21_is_greater_or_equal(dec6, dec5), 0);
 
   s21_decimal dec7 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
+      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
   s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}};
   ck_assert_int_eq(s21_is_greater_or_equal(dec7, dec8), 0);
   ck_assert_int_eq(s21_is_greater_or_equal(dec8, dec7), 1);
 
   s21_decimal dec1 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
+      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
   s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}};
   ck_assert_int_eq(s21_is_greater_or_equal(dec1, dec2), 1);
   ck_assert_int_eq(s21_is_greater_or_equal(dec2, dec1), 0);
 
   s21_decimal dec3 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
-  s21_decimal dec4 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //
+      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
+  s21_decimal dec4 = {{12, 0, 0, 0b10000000000000010000000000000000}};  //
 
   ck_assert_int_eq(s21_is_greater_or_equal(dec3, dec4), 0);
   ck_assert_int_eq(s21_is_greater_or_equal(dec4, dec3), 1);

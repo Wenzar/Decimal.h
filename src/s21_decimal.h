@@ -22,7 +22,6 @@ typedef union {
   float float_number;
 } float_bits;
 
-
 extern s21_decimal ten;
 extern s21_decimal decimal_null;
 extern s21_decimal one_decimal;
@@ -95,10 +94,14 @@ int mantis_is_greater_or_equal(s21_big_decimal value_1,
 void shift_left(s21_big_decimal *value, int step);
 int countFractionalDigits(float num);
 float s21_rand_r(float a, float b);
-int my_remainder (s21_big_decimal value);
-int remainder_division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
-                         s21_big_decimal *result);
-                         int error_scale (s21_decimal value);
-                         int check_zero_decimal(s21_decimal value);
+int my_remainder(s21_big_decimal value);
+int remainder_division_by_integer(s21_big_decimal value_1,
+                                  s21_big_decimal value_2,
+                                  s21_big_decimal *result);
+int error_scale(s21_decimal value);
+int check_zero_decimal(s21_decimal value);
+void set_degree(s21_decimal *value, int degree);
+void set_minos(s21_decimal *value);
+int get_minos(s21_decimal value);
 
 #endif

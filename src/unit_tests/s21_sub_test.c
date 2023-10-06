@@ -1014,7 +1014,7 @@ START_TEST(s21_subTest33) {
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_0) { // 10 -5 =5
+START_TEST(s21_test_decimal_sub_simple_0) {  // 10 -5 =5
   s21_decimal c = {{10, 0, 0, 0}};
   s21_decimal d = {{5, 0, 0, 0}};
   s21_decimal etalon = {{5, 0, 0, 0}};
@@ -1027,12 +1027,12 @@ START_TEST(s21_test_decimal_sub_simple_0) { // 10 -5 =5
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_1) { // 100 -5 !=5
+START_TEST(s21_test_decimal_sub_simple_1) {  // 100 -5 !=5
   s21_decimal c = {{100, 0, 0, 0}};
   s21_decimal d = {{5, 0, 0, 0}};
   s21_decimal etalon = {{5, 0, 0, 0}};
@@ -1045,12 +1045,12 @@ START_TEST(s21_test_decimal_sub_simple_1) { // 100 -5 !=5
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
-  ck_assert_int_eq(equal, 0); // *
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
+  ck_assert_int_eq(equal, 0);  // *
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_2) { // INT_MAX -5 = 2147483642
+START_TEST(s21_test_decimal_sub_simple_2) {  // INT_MAX -5 = 2147483642
   s21_decimal c = {{INT_MAX, 0, 0, 0}};
   s21_decimal d = {{5, 0, 0, 0}};
   s21_decimal etalon = {{2147483642, 0, 0, 0}};
@@ -1062,13 +1062,13 @@ START_TEST(s21_test_decimal_sub_simple_2) { // INT_MAX -5 = 2147483642
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_3) { // роботает только с ппервым
-                                            // массивом - ложный результат
+START_TEST(s21_test_decimal_sub_simple_3) {  // роботает только с ппервым
+                                             // массивом - ложный результат
   s21_decimal c = {{INT_MAX, INT_MAX, 0, 0}};
   s21_decimal d = {{5, 0, 0, 0}};
   s21_decimal etalon = {{INT_MAX - 5, INT_MAX, 0, 0}};
@@ -1081,11 +1081,11 @@ START_TEST(s21_test_decimal_sub_simple_3) { // роботает только с 
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 
-START_TEST(s21_test_decimal_sub_simple_7) { // 1-(-1)=2
+START_TEST(s21_test_decimal_sub_simple_7) {  // 1-(-1)=2
   s21_decimal c = {{1, 0, 0, 0}};
   s21_decimal d = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{2, 0, 0, 0}};
@@ -1098,12 +1098,12 @@ START_TEST(s21_test_decimal_sub_simple_7) { // 1-(-1)=2
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_8) { // -1-(-1)=0
+START_TEST(s21_test_decimal_sub_simple_8) {  // -1-(-1)=0
   s21_decimal c = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{1, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{0, 0, 0, 0}};
@@ -1116,12 +1116,12 @@ START_TEST(s21_test_decimal_sub_simple_8) { // -1-(-1)=0
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_10) { // 1-(-1)=2
+START_TEST(s21_test_decimal_sub_simple_10) {  // 1-(-1)=2
   s21_decimal c = {{100, 0, 0, 0}};
   s21_decimal d = {{100, 0, 0, ~(INT_MAX)}};
   s21_decimal etalon = {{200, 0, 0, 0}};
@@ -1134,12 +1134,12 @@ START_TEST(s21_test_decimal_sub_simple_10) { // 1-(-1)=2
   int add = s21_sub(c, d, p_res);
   ck_assert_int_eq(add, 0);
 
-  int equal = s21_is_equal(res, etalon); // Возвращаемое значение: 0 - 0 1 - 1
+  int equal = s21_is_equal(res, etalon);  // Возвращаемое значение: 0 - 0 1 - 1
   ck_assert_int_eq(equal, 1);
 }
 END_TEST
 
-START_TEST(s21_test_decimal_sub_simple_11) { // -1-(-1)=0
+START_TEST(s21_test_decimal_sub_simple_11) {  // -1-(-1)=0
   s21_decimal c = {{100, 0, 0, ~(INT_MAX)}};
   s21_decimal d = {{100, 0, 0, ~(INT_MAX)}};
 
@@ -1154,8 +1154,8 @@ START_TEST(s21_test_decimal_sub_simple_11) { // -1-(-1)=0
 END_TEST
 
 START_TEST(s21_sub_int_23) {
-  s21_decimal dec1={{0}};
-  s21_decimal dec2={{0}};
+  s21_decimal dec1 = {{0}};
+  s21_decimal dec2 = {{0}};
   int tmp1 = -100;
   int tmp2 = -99999;
   int res_s21 = 0;
@@ -1186,8 +1186,8 @@ START_TEST(s21_sub_int_24) {
 END_TEST
 
 START_TEST(s21_sub_int_25) {
-  s21_decimal dec1={0};
-  s21_decimal dec2={0};
+  s21_decimal dec1 = {0};
+  s21_decimal dec2 = {0};
   int tmp1 = -214748347;
   int tmp2 = 217483647;
   int res_s21 = 0;
@@ -1441,9 +1441,9 @@ Suite *s21_sub_suite(void) {
   tcase_add_test(test_case, s21_test_decimal_sub_simple_2);
   tcase_add_test(test_case, s21_test_decimal_sub_simple_3);
 
-  tcase_add_test(test_case, s21_test_decimal_sub_simple_7); //-
+  tcase_add_test(test_case, s21_test_decimal_sub_simple_7);  //-
   tcase_add_test(test_case, s21_test_decimal_sub_simple_8);
-  tcase_add_test(test_case, s21_test_decimal_sub_simple_10); //-
+  tcase_add_test(test_case, s21_test_decimal_sub_simple_10);  //-
   tcase_add_test(test_case, s21_test_decimal_sub_simple_11);
   tcase_add_test(test_case, s21_sub_int_23);
   tcase_add_test(test_case, s21_sub_int_24);

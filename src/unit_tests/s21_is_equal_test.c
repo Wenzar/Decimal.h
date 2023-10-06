@@ -14,7 +14,7 @@ END_TEST
 START_TEST(equal_2) {
   float num1 = 1.39;
   float num2 = 1.39;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_float_to_decimal(num1, &dec1);
   s21_from_float_to_decimal(num2, &dec2);
   int res = s21_is_equal(dec1, dec2);
@@ -36,7 +36,7 @@ END_TEST
 START_TEST(equal_4) {
   int num1 = 0;
   int num2 = 0;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_equal(dec1, dec2);
@@ -58,7 +58,7 @@ END_TEST
 START_TEST(equal_6) {
   int num1 = -3;
   int num2 = -3;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_equal(dec1, dec2);
@@ -132,7 +132,7 @@ END_TEST
 // END_TEST
 
 START_TEST(s21_equal_null_12) {
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(0, &dec1);
   s21_from_int_to_decimal(0, &dec2);
   dec1.bits[3] = 0;

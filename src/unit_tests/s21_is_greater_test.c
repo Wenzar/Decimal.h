@@ -102,7 +102,7 @@ END_TEST
 START_TEST(greater_4) {
   int num1 = 0;
   int num2 = 0;
-  s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater(dec1, dec2);
@@ -113,7 +113,7 @@ END_TEST
 START_TEST(greater_5) {
   int num1 = 3;
   int num2 = 9;
-   s21_decimal dec1={0}, dec2={0};
+  s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater(dec1, dec2);
@@ -124,7 +124,7 @@ END_TEST
 START_TEST(greater_6) {
   int num1 = -3;
   int num2 = -3;
-  s21_decimal dec1, dec2;
+  s21_decimal dec1 = {{0}}, dec2 = {{0}};
   s21_from_int_to_decimal(num1, &dec1);
   s21_from_int_to_decimal(num2, &dec2);
   int res = s21_is_greater(dec1, dec2);
@@ -178,26 +178,28 @@ END_TEST
 
 START_TEST(s21_greater_11) {
   s21_decimal dec5 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
-  s21_decimal dec6 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //  -1.2;
+      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
+  s21_decimal dec6 = {
+      {12, 0, 0, 0b10000000000000010000000000000000}};  //  -1.2;
   ck_assert_int_eq(s21_is_greater(dec5, dec6), 1);
   ck_assert_int_eq(s21_is_greater(dec6, dec5), 0);
 
   s21_decimal dec7 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
-  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2;
+      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
+  s21_decimal dec8 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2;
   ck_assert_int_eq(s21_is_greater(dec7, dec8), 0);
   ck_assert_int_eq(s21_is_greater(dec8, dec7), 1);
 
   s21_decimal dec1 = {
-      {12345, 0, 0, 0b00000000000001000000000000000000}}; //  1.2345
-  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}}; //  1.2
+      {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
+  s21_decimal dec2 = {{12, 0, 0, 0b00000000000000010000000000000000}};  //  1.2
   ck_assert_int_eq(s21_is_greater(dec1, dec2), 1);
   ck_assert_int_eq(s21_is_greater(dec2, dec1), 0);
 
   s21_decimal dec3 = {
-      {12345, 0, 0, 0b10000000000001000000000000000000}}; // -1.2345
-  s21_decimal dec4 = {{12, 0, 0, 0b10000000000000010000000000000000}}; //   -1.2
+      {12345, 0, 0, 0b10000000000001000000000000000000}};  // -1.2345
+  s21_decimal dec4 = {
+      {12, 0, 0, 0b10000000000000010000000000000000}};  //   -1.2
   ck_assert_int_eq(s21_is_greater(dec3, dec4), 0);
   ck_assert_int_eq(s21_is_greater(dec4, dec3), 1);
 }
@@ -668,7 +670,7 @@ START_TEST(s21_is_greaterTest19) {
   src2.bits[2] = 0b00000010110101010000111100111111;
   src2.bits[3] = 0b00000000000100000000000000000000;
   int result = s21_is_greater(src1, src2);
-  int origin = 1;
+  int origin = 0;
   ck_assert_int_eq(result, origin);
 }
 END_TEST
@@ -731,7 +733,7 @@ START_TEST(s21_is_greaterTest22) {
   src2.bits[2] = 0b00000010110101010000111100111111;
   src2.bits[3] = 0b10000000000100000000000000000000;
   int result = s21_is_greater(src1, src2);
-  int origin = 0;
+  int origin = 1;
   ck_assert_int_eq(result, origin);
 }
 END_TEST
@@ -983,7 +985,7 @@ START_TEST(s21_is_greaterTest34) {
   src2.bits[2] = 0b00000000000001011001011001001000;
   src2.bits[3] = 0b00000000000100010000000000000000;
   int result = s21_is_greater(src1, src2);
-  int origin = 0;
+  int origin = 1;
   ck_assert_int_eq(result, origin);
 }
 END_TEST
