@@ -165,10 +165,8 @@ int big_setBit_by_shift(s21_big_decimal *value, int bit, int num) {
 int demotion_scale(s21_big_decimal *value) {
   int error = 0;
   unsigned int tmp_bit = value->bits[6] >> 31;
-  // printf("\nscale %d\n", tmp_bit);
   big_setBit(value, 223, 0);
   unsigned int num = value->bits[6] >> 16;
-  // printf("\nnum %d\n", tmp_bit);
   if (!num) {
     error = 1;
   } else {
@@ -330,38 +328,6 @@ void big_shift_right(s21_big_decimal *value, int step) {
     }
   }
 }
-int shift_right(s21_decimal *value, int step) {
-  int error = 0;
-  if (getBit(*value, 0)) {
-    error = 1;
-  }
-  for (int i = 0; i < step; i++) {
-    if (!getBit(*value, 64)) {
-      value->bits[2] = value->bits[2] >> 1;
-      if (!getBit(*value, 32)) {
-        value->bits[1] = value->bits[1] >> 1;
-        value->bits[0] = value->bits[0] >> 1;
-      } else {
-        value->bits[1] = value->bits[1] >> 1;
-        value->bits[0] = value->bits[0] >> 1;
-        setBit(value, 31, 1);
-      }
-    } else {
-      value->bits[2] = value->bits[2] >> 1;
-      if (!getBit(*value, 32)) {
-        value->bits[1] = value->bits[1] >> 1;
-        setBit(value, 63, 1);
-        value->bits[0] = value->bits[0] >> 1;
-      } else {
-        value->bits[1] = value->bits[1] >> 1;
-        setBit(value, 63, 1);
-        value->bits[0] = value->bits[0] >> 1;
-        setBit(value, 31, 1);
-      }
-    }
-  }
-  return error;
-}
 
 void shift_left(s21_big_decimal *value, int step) {
   int scale = value->bits[6];
@@ -448,15 +414,12 @@ int mantis_s21_is_equal(s21_big_decimal value_1, s21_big_decimal value_2) {
   return result;
 }
 int bank_round(s21_big_decimal value, s21_big_decimal *result) {
-  // printf("\nRESULT HERE %u %u %u %u %u %u %u\n",
-  // find_out_the_degree(value),value.bits[5],value.bits[4],value.bits[3],value.bits[2],value.bits[1],value.bits[0]);
   int error = 0;
   if (check_dop_decimal(value)) {
     while (check_dop_decimal(value) && find_out_the_degree(value) != 0) {
       demotion_scale(&value);
     }
     if (check_dop_decimal(value)) {
-      // printf("HERE");
       if (value.bits[3] && find_out_the_degree(value) == 0) {
         error = 1;
       }
@@ -518,36 +481,6 @@ int check_five_number(s21_big_decimal value) {
     result = 0;
   }
   return result;
-}
-int check_osnova(s21_big_decimal value) {
-  int result = 0;
-  for (int big_bits = 0; big_bits <= 3; big_bits++) {
-    if (value.bits[big_bits] != 0) {
-      result = 1;
-    }
-  }
-  return result;
-}
-
-// Подсчет кол-ва цифр после запятой
-int countFractionalDigits(float num) {
-  const int maxPrecision = 7;
-
-  float fractionalPart = fabsf(num - floorf(num));
-  int count = 0;
-
-  while (count < maxPrecision) {
-    fractionalPart *= 10.0f;
-    int digit = (int)fractionalPart;
-    fractionalPart -= digit;
-    count++;
-
-    if (fractionalPart == 0.0f) {
-      break;
-    }
-  }
-
-  return count;
 }
 
 /// @brief генератор случайных чисел

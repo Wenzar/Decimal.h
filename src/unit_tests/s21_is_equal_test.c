@@ -110,27 +110,6 @@ START_TEST(equal_10) {
 }
 END_TEST
 
-// START_TEST(s21_equal_11) {
-//   s21_decimal dec1 = {
-//       {12345, 0, 0, 0b00000000000001000000000000000000}};  //  1.2345
-//   s21_decimal dec2 = {{12, 0, 0, 0b10000000000000010000000000000000}};  //
-//   -1.2; ck_assert_int_eq(s21_is_equal(dec1, dec2), 0);
-
-//   s21_decimal dec3 = {
-//       {120000, 0, 0, 0b00000000000001000000000000000000}};  //  12.0000
-//   s21_decimal dec4 = {{12, 0, 0, 0b00000000000000000000000000000000}};  //
-//   12; ck_assert_int_eq(s21_is_equal(dec3, dec4), 1);
-
-//   s21_decimal dec5 = {{0, 0, 0, 0b00000000000000000000000000000000}};   //  0
-//   s21_decimal dec6 = {{00, 0, 0, 0b00000000000000010000000000000000}};  //
-//   0.0; ck_assert_int_eq(s21_is_equal(dec5, dec6), 1);
-
-//   s21_decimal dec7 = {{0, 0, 0, 0b00000000000000000000000000000000}};  //   0
-//   s21_decimal dec8 = {{0, 0, 0, 0b10000000000000000000000000000000}};  // -0;
-//   ck_assert_int_eq(s21_is_equal(dec7, dec8), 0);
-// }
-// END_TEST
-
 START_TEST(s21_equal_null_12) {
   s21_decimal dec1 = {0}, dec2 = {0};
   s21_from_int_to_decimal(0, &dec1);
@@ -911,7 +890,6 @@ Suite *s21_is_equal_suite(void) {
   tcase_add_test(tc, equal_8);
   tcase_add_test(tc, equal_9);
   tcase_add_test(tc, equal_10);
-  // tcase_add_test(tc, s21_equal_11);
   tcase_add_test(tc, s21_equal_null_12);
 
   tcase_add_test(tc, s21_is_equalTest1);

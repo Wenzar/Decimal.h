@@ -1217,74 +1217,25 @@ START_TEST(s21_sub_int_26) {
 }
 END_TEST
 
-// START_TEST(s21_sub_inf_27)
-// {
-//     float tmp = pow(2, 31);
-//     s21_decimal dec1 = {{4294967295, 4294967295, 4294967295, 0}};
-//     s21_decimal dec2 = {{1, 0, 0, tmp}};
-//     s21_decimal res1 = {{0}};
-//     int ret_s21 = s21_sub(dec1, dec2, &res1);
-//     ck_assert_int_eq(1, ret_s21);
-// }
-// END_TEST
+START_TEST(s21_sub_inf_27) {
+  float tmp = pow(2, 31);
+  s21_decimal dec1 = {{4294967295, 4294967295, 4294967295, 0}};
+  s21_decimal dec2 = {{1, 0, 0, tmp}};
+  s21_decimal res1 = {{0}};
+  int ret_s21 = s21_sub(dec1, dec2, &res1);
+  ck_assert_int_eq(1, ret_s21);
+}
+END_TEST
 
-// START_TEST(s21_sub_neg_inf_28)
-// {
-//     float tmp = pow(2, 31);
-//     s21_decimal dec1 = {{4294967295, 4294967295, 4294967295, tmp}};
-//     s21_decimal dec2 = {{1, 0, 0, 0}};
-//     s21_decimal res1 = {{0}};
-//     int ret_s21 = s21_sub(dec1, dec2, &res1);
-//     ck_assert_int_eq(2, ret_s21);
-// }
-// END_TEST
-
-// START_TEST(sub_test_29) {
-//   // float num1 = 79228162514264337593543950335.0;
-//   int dst[96] =
-//       {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};  //
-//        79228162514264337593543950335
-//   // printf("num1: %.28f\n", num1);
-//   float num2 = 0.6;
-//   // float dif_float = num1 - num2;
-//   s21_decimal a = {0};
-//   for (int i = 0; i < 96; i++) {
-//     if (dst[i] == 1)
-//       set_1_bit(&a.bits[i / 32], i % 32);
-//     else
-//       set_0_bit(&a.bits[i / 32], i % 32);
-//   }
-//   for (int i = 0; i < 32; i++) {
-//     set_0_bit(&a.bits[3], i % 32);
-//   }
-//   // s21_from_float_to_decimal(num1, &a);
-//   s21_decimal b = {0};
-//   b.bits[0] = 0b00000000000000000000000000000110;
-//   b.bits[1] = 0b00000000000000000000000000000000;
-//   b.bits[2] = 0b00000000000000000000000000000000;
-//   b.bits[3] = 0b00000000000000010000000000000000;
-//   s21_from_float_to_decimal(num2, &b);
-//   s21_decimal res_dec = {0};
-//   // float res_float = 0.0;
-//   s21_decimal original_res = {0};
-//   original_res.bits[0] = 0b11111111111111111111111111111110;
-//   original_res.bits[1] = 0b11111111111111111111111111111111;
-//   original_res.bits[2] = 0b11111111111111111111111111111111;
-//   original_res.bits[3] = 0b00000000000000000000000000000000;
-//   int error = s21_sub(a, b, &res_dec);
-//   // s21_from_decimal_to_float(res_dec, &res_float);
-//   // ck_assert_float_eq(res_float, dif_float);
-//   ck_assert_int_eq(error, 0);
-//   ck_assert_int_eq(original_res.bits[0], res_dec.bits[0]);
-//   ck_assert_int_eq(original_res.bits[1], res_dec.bits[1]);
-//   ck_assert_int_eq(original_res.bits[2], res_dec.bits[2]);
-//   ck_assert_int_eq(original_res.bits[3], res_dec.bits[3]);
-// }
-// END_TEST
+START_TEST(s21_sub_neg_inf_28) {
+  float tmp = pow(2, 31);
+  s21_decimal dec1 = {{4294967295, 4294967295, 4294967295, tmp}};
+  s21_decimal dec2 = {{1, 0, 0, 0}};
+  s21_decimal res1 = {{0}};
+  int ret_s21 = s21_sub(dec1, dec2, &res1);
+  ck_assert_int_eq(2, ret_s21);
+}
+END_TEST
 
 START_TEST(s21_sub_max_30) {
   s21_decimal src1 = {0};
@@ -1449,9 +1400,8 @@ Suite *s21_sub_suite(void) {
   tcase_add_test(test_case, s21_sub_int_24);
   tcase_add_test(test_case, s21_sub_int_25);
   tcase_add_test(test_case, s21_sub_int_26);
-  // tcase_add_test(test_case, s21_sub_inf_27);
-  // tcase_add_test(test_case, s21_sub_neg_inf_28);
-  // tcase_add_test(test_case, sub_test_29);
+  tcase_add_test(test_case, s21_sub_inf_27);
+  tcase_add_test(test_case, s21_sub_neg_inf_28);
 
   tcase_add_test(test_case, s21_sub_max_30);
   tcase_add_test(test_case, s21_sub_max_31);

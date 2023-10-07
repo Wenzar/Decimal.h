@@ -1,4 +1,5 @@
 #include "s21_decimal.h"
+
 int s21_round(s21_decimal value, s21_decimal *result) {
   int error = 0;
   s21_big_decimal big_copy_decimal = {0};

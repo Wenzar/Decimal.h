@@ -158,7 +158,6 @@ START_TEST(s21_round_8) {
   s21_round(dec1, &res1);
   float result_float = 0;
   s21_from_decimal_to_float(dec1, &result_float);
-  // printf("\ns21_round_8: %f\n",result_float);
   ck_assert_float_eq(res1.bits[0], result.bits[0]);
   ck_assert_float_eq(res1.bits[1], result.bits[1]);
   ck_assert_float_eq(res1.bits[2], result.bits[2]);
@@ -439,7 +438,6 @@ START_TEST(s21_roundTest8) {
   s21_round(src1, &result);
   float result_float = 0;
   s21_from_decimal_to_float(src1, &result_float);
-  // printf("\ns21_roundTest8: %f\n",result_float);
   origin.bits[0] = 0b10100100000111100100000000101110;
   origin.bits[1] = 0b00000000000000000000011100111101;
   origin.bits[2] = 0b00000000000000000000000000000000;

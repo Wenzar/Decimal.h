@@ -41,11 +41,7 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         } else if (big_getBit(current_value_1, 223) &&
                    !big_getBit(current_value_2, 223)) {
           difference(current_value_1, current_value_2, &big_result);
-          // printf("\nRESULT HERE %u %u %u %u %u %u %u\n",
-          // find_out_the_degree(big_result),big_result.bits[5],big_result.bits[4],big_result.bits[3],big_result.bits[2],big_result.bits[1],big_result.bits[0]);
-
           add_return = bank_round(big_result, &big_result);
-
           big_setBit(&big_result, 223, 1);
           if (add_return) {
             add_return = 2;
