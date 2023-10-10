@@ -101,6 +101,195 @@ START_TEST(div_9) {
 }
 END_TEST
 
+START_TEST(test_div_fail_manual1) {
+  // 792281625.14264337593543950335
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  int code = s21_div(decimal1, decimal2, NULL);
+
+  ck_assert_int_ne(code, 0);
+}
+
+START_TEST(test_div_fail_manual2) {
+  // степень 154 (показатель степени должен быть от 0 до 28)
+  // биты 0-15 не нули
+  // биты 24-30 не нули
+  s21_decimal decimal1 = {{0, 0, 0, 1000000000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual3) {
+  // степень 29 (показатель степени должен быть от 0 до 28)
+  s21_decimal decimal1 = {{-1, 0, 0, 0x1D0000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual4) {
+  // степень 29 (показатель степени должен быть от 0 до 28)
+  s21_decimal decimal1 = {{0, 0, 0, 0x1D0000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual5) {
+  // степень 28 (что корректно), но биты 0-15 не нули (младший бит)
+  s21_decimal decimal1 = {{-1, 0, 0, 0x1C0001}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual6) {
+  // степень 28 (что корректно), но биты 0-15 не нули (старший бит)
+  s21_decimal decimal1 = {{-1, 0, 0, 0x1C8000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual7) {
+  // степень 28 (что корректно), но биты 24-30 не нули (младший бит)
+  s21_decimal decimal1 = {{-1, 0, 0, 0x11C0000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual8) {
+  // степень 28 (что корректно), но биты 24-30 не нули (старший бит)
+  s21_decimal decimal1 = {{-1, 0, 0, 0x401C0000}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual9) {
+  // Просто все единицы
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF}};
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual10) {
+  // степень 154 (показатель степени должен быть от 0 до 28)
+  // биты 0-15 не нули
+  // биты 24-30 не нули
+  s21_decimal decimal2 = {{0, 0, 0, 1000000000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual11) {
+  // степень 29 (показатель степени должен быть от 0 до 28)
+  s21_decimal decimal2 = {{-1, 0, 0, 0x1D0000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual12) {
+  // степень 29 (показатель степени должен быть от 0 до 28)
+  s21_decimal decimal2 = {{0, 0, 0, 0x1D0000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual13) {
+  // степень 28 (что корректно), но биты 0-15 не нули (младший бит)
+  s21_decimal decimal2 = {{-1, 0, 0, 0x1C0001}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual14) {
+  // степень 28 (что корректно), но биты 0-15 не нули (старший бит)
+  s21_decimal decimal2 = {{-1, 0, 0, 0x1C8000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual15) {
+  // степень 28 (что корректно), но биты 24-30 не нули (младший бит)
+  s21_decimal decimal2 = {{-1, 0, 0, 0x11C0000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual16) {
+  // степень 28 (что корректно), но биты 24-30 не нули (старший бит)
+  s21_decimal decimal2 = {{-1, 0, 0, 0x401C0000}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
+START_TEST(test_div_fail_manual17) {
+  // Просто все единицы
+  s21_decimal decimal2 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF}};
+  s21_decimal decimal1 = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x140000}};
+  s21_decimal result;
+  int code = s21_div(decimal1, decimal2, &result);
+
+  ck_assert_int_ne(code, 0);
+}
+END_TEST
+
 Suite *s21_div_suite(void) {
   Suite *test_suite = suite_create("s21_div_suite");
   TCase *test_case = tcase_create("s21_div_case");
@@ -115,6 +304,23 @@ Suite *s21_div_suite(void) {
   tcase_add_test(test_case, div_7);
   tcase_add_test(test_case, div_8);
   tcase_add_test(test_case, div_9);
+  tcase_add_test(test_case, test_div_fail_manual1);
+  tcase_add_test(test_case, test_div_fail_manual2);
+  tcase_add_test(test_case, test_div_fail_manual3);
+  tcase_add_test(test_case, test_div_fail_manual4);
+  tcase_add_test(test_case, test_div_fail_manual5);
+  tcase_add_test(test_case, test_div_fail_manual6);
+  tcase_add_test(test_case, test_div_fail_manual7);
+  tcase_add_test(test_case, test_div_fail_manual8);
+  tcase_add_test(test_case, test_div_fail_manual9);
+  tcase_add_test(test_case, test_div_fail_manual10);
+  tcase_add_test(test_case, test_div_fail_manual11);
+  tcase_add_test(test_case, test_div_fail_manual12);
+  tcase_add_test(test_case, test_div_fail_manual13);
+  tcase_add_test(test_case, test_div_fail_manual14);
+  tcase_add_test(test_case, test_div_fail_manual15);
+  tcase_add_test(test_case, test_div_fail_manual16);
+  tcase_add_test(test_case, test_div_fail_manual17);
 
   suite_add_tcase(test_suite, test_case);
   return test_suite;
