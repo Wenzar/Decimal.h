@@ -332,6 +332,102 @@ START_TEST(mul_test_8) {
 }
 END_TEST
 
+START_TEST(mul_test_9) {
+  float num1 = 3228162514264337593543950335.0;
+  float num2 = 3.0;
+  float res_origin = num1 * num2;
+  s21_decimal a = {0};
+  s21_decimal b = {0};
+  s21_from_float_to_decimal(num1, &a);
+  s21_from_float_to_decimal(num2, &b);
+  s21_decimal res_dec = {0};
+  float res_float = 0;
+  s21_mul(a, b, &res_dec);
+  s21_from_decimal_to_float(res_dec, &res_float);
+  ck_assert_float_eq(res_float, res_origin);
+}
+END_TEST
+
+START_TEST(mul_test_10) {
+  float num1 = MAX_DEC_FLOAT;
+  float num2 = 1;
+  float res_origin = num1 * num2;
+  s21_decimal a = {0};
+  s21_decimal b = {0};
+  s21_from_float_to_decimal(num1, &a);
+  s21_from_float_to_decimal(num2, &b);
+  s21_decimal res_dec = {0};
+  float res_float = 0;
+  s21_mul(a, b, &res_dec);
+  s21_from_decimal_to_float(res_dec, &res_float);
+  ck_assert_float_eq(res_float, res_origin);
+}
+END_TEST
+
+START_TEST(mul_test_11) {
+  float num1 = -MAX_DEC_FLOAT;
+  float num2 = 1;
+  float res_origin = num1 * num2;
+  s21_decimal a = {0};
+  s21_decimal b = {0};
+  s21_from_float_to_decimal(num1, &a);
+  s21_from_float_to_decimal(num2, &b);
+  s21_decimal res_dec = {0};
+  float res_float = 0;
+  s21_mul(a, b, &res_dec);
+  s21_from_decimal_to_float(res_dec, &res_float);
+  ck_assert_float_eq(res_float, res_origin);
+}
+END_TEST
+
+START_TEST(mul_test_12) {
+    s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
+  // value_1 = 0.35;
+  // value_2 = 3;
+
+  value_1.bits[0] = 0b00000000000000000000000000100011;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+  value_2.bits[0] = 0b00000000000000000000000000000011;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  s21_decimal check = {{0x69, 0, 0, 0b00000000000000100000000000000000}}; // check = 1.05
+  float check_float = 0;
+  int return_value = s21_mul(value_1, value_2, &result);
+  s21_from_decimal_to_float(result,&check_float);
+  printf("\nresult: %f\n",check_float);
+  ck_assert_int_eq(s21_is_equal(result, check), 1);
+  ck_assert_int_eq(return_value, 0);
+}
+END_TEST
+
+START_TEST(mul_test_13) {
+    s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
+  // value_1 = 0.35;
+  // value_2 = -3;
+
+  value_1.bits[0] = 0b00000000000000000000000000100011;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+  value_2.bits[0] = 0b00000000000000000000000000000011;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  s21_decimal check = {{0x69, 0, 0, 0b10000000000000100000000000000000}}; // check = -1.05
+  float check_float = 0;
+  int return_value = s21_mul(value_1, value_2, &result);
+  s21_from_decimal_to_float(result,&check_float);
+  printf("\nresult: %f\n",check_float);
+  ck_assert_int_eq(s21_is_equal(result, check), 1);
+  ck_assert_int_eq(return_value, 0);
+}
+END_TEST
+
 Suite *s21_mul_suite(void) {
   Suite *s = suite_create("suite_mul");
   TCase *tc = tcase_create("mul_tc");
@@ -364,6 +460,11 @@ Suite *s21_mul_suite(void) {
   tcase_add_test(tc, mul_test_6);
   tcase_add_test(tc, mul_test_7);
   tcase_add_test(tc, mul_test_8);
+  tcase_add_test(tc, mul_test_9);
+  tcase_add_test(tc, mul_test_10);
+  tcase_add_test(tc, mul_test_11);
+  tcase_add_test(tc, mul_test_12);
+  tcase_add_test(tc, mul_test_13);
 
   suite_add_tcase(s, tc);
   return s;
