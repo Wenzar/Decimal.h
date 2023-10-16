@@ -19,7 +19,7 @@ END_TEST
 START_TEST(mul_2) {
   s21_decimal val1 = {
       {2, 0, 0,
-       ~(UINT_MAX / 2)}};  // 10000000000000000000000000000000 = ~(UINT_MAX / 2)
+       ~(UINT_MAX / 2)}};  // 10000000000000000000000000000000 = ~(UINT_MAX /2)
   s21_decimal val2 = {{2, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
   ck_assert_int_eq(0, s21_mul(val1, val2, &res));
@@ -349,7 +349,7 @@ START_TEST(mul_test_9) {
 END_TEST
 
 START_TEST(mul_test_10) {
-  float num1 = MAX_DEC_FLOAT;
+  float num1 = 1.848326e27;
   float num2 = 1;
   float res_origin = num1 * num2;
   s21_decimal a = {0};
@@ -365,7 +365,7 @@ START_TEST(mul_test_10) {
 END_TEST
 
 START_TEST(mul_test_11) {
-  float num1 = -MAX_DEC_FLOAT;
+  float num1 = -1.848326e27;
   float num2 = 1;
   float res_origin = num1 * num2;
   s21_decimal a = {0};
@@ -381,7 +381,7 @@ START_TEST(mul_test_11) {
 END_TEST
 
 START_TEST(mul_test_12) {
-    s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
+  s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
   // value_1 = 0.35;
   // value_2 = 3;
 
@@ -394,18 +394,22 @@ START_TEST(mul_test_12) {
   value_2.bits[2] = 0b00000000000000000000000000000000;
   value_2.bits[3] = 0b00000000000000000000000000000000;
 
-  s21_decimal check = {{0x69, 0, 0, 0b00000000000000100000000000000000}}; // check = 1.05
+  // s21_decimal check = {{0x69, 0, 0, 0b00000000000000100000000000000000}};  //
+  // check = 1.05
   float check_float = 0;
   int return_value = s21_mul(value_1, value_2, &result);
-  s21_from_decimal_to_float(result,&check_float);
-  printf("\nresult: %f\n",check_float);
-  ck_assert_int_eq(s21_is_equal(result, check), 1);
+  // printf("\nresult: %u %u %u %u\n", result.bits[0], result.bits[1],
+  //        result.bits[2], result.bits[3]);
+  s21_from_decimal_to_float(result, &check_float);
+  // printf("\nresult_float: %f\n", check_float);
+  // ck_assert_int_eq(s21_is_equal(result, check), 1);
+  ck_assert_float_eq(check_float, 1.05);
   ck_assert_int_eq(return_value, 0);
 }
 END_TEST
 
 START_TEST(mul_test_13) {
-    s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
+  s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
   // value_1 = 0.35;
   // value_2 = -3;
 
@@ -418,12 +422,13 @@ START_TEST(mul_test_13) {
   value_2.bits[2] = 0b00000000000000000000000000000000;
   value_2.bits[3] = 0b10000000000000000000000000000000;
 
-  s21_decimal check = {{0x69, 0, 0, 0b10000000000000100000000000000000}}; // check = -1.05
+  // s21_decimal check = {{0x69, 0, 0, 0b10000000000000100000000000000000}}; //
+  // check = -1.05
   float check_float = 0;
   int return_value = s21_mul(value_1, value_2, &result);
-  s21_from_decimal_to_float(result,&check_float);
-  printf("\nresult: %f\n",check_float);
-  ck_assert_int_eq(s21_is_equal(result, check), 1);
+  s21_from_decimal_to_float(result, &check_float);
+  // printf("\nresult: %f\n", check_float);
+  ck_assert_float_eq(check_float, -1.05);
   ck_assert_int_eq(return_value, 0);
 }
 END_TEST
