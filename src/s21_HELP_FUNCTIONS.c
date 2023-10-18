@@ -363,13 +363,6 @@ int step_left(int bits_decimal) {
 }
 int multiplication(s21_big_decimal value_1, s21_big_decimal value_2,
                    s21_big_decimal *result) {
-  // printf("----------------------------------------------------");
-  //     printf("\nvalue_1->bits: %u %u %u %u\n", value_1.bits[0],
-  //     value_1.bits[1],
-  //            value_1.bits[2], value_1.bits[6]);
-  //     printf("\nvalue_2->bits: %u %u %u %u\n", value_2.bits[0],
-  //     value_2.bits[1],
-  //            value_2.bits[2], value_2.bits[6]);
   int error = 0;
   unsigned int count = value_1.bits[6];
   *result = big_decimal_null;
@@ -380,8 +373,6 @@ int multiplication(s21_big_decimal value_1, s21_big_decimal value_2,
       error = big_addition(*result, num, result);
     }
   }
-  // printf("\nresult->bits: %u %u %u %u\n", result->bits[0], result->bits[1],
-  //        result->bits[2], result->bits[6]);
   result->bits[6] = count;
   return error;
 }

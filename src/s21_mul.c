@@ -10,7 +10,6 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 
   big_initialization(value_1, &current_value_1);
   big_initialization(value_2, &current_value_2);
-  // normalization(&current_value_1, &current_value_2);
 
   if ((!big_getBit(current_value_1, 223) &&
        !big_getBit(current_value_2, 223)) ||
@@ -28,6 +27,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     if (s21_is_greater_or_equal(fabs_result, max_num)) {
       add_return = 1;
     }
+
+    result->bits[3] = value_1.bits[3] + value_2.bits[3];
 
   } else if ((!big_getBit(current_value_1, 223) &&
               big_getBit(current_value_2, 223)) ||
@@ -48,7 +49,7 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
       add_return = 2;
     }
 
-    result->bits[3] = value_1.bits[3] | value_2.bits[3];
+    result->bits[3] = value_1.bits[3] + value_2.bits[3];
   }
   return add_return;
 }

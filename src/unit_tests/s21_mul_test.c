@@ -412,7 +412,8 @@ START_TEST(mul_test_13) {
   s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
   // value_1 = 0.35;
   // value_2 = -3;
-
+  // 00000000000000010000000000000000
+  //
   value_1.bits[0] = 0b00000000000000000000000000100011;
   value_1.bits[1] = 0b00000000000000000000000000000000;
   value_1.bits[2] = 0b00000000000000000000000000000000;
@@ -436,7 +437,7 @@ END_TEST
 START_TEST(mul_test_14) {
   s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
   // value_1 = 0.35;
-  // value_2 = -3.5;
+  // value_2 = -0.00035;
 
   value_2.bits[0] = 0b00000000000000000000000000100011;
   value_2.bits[1] = 0b00000000000000000000000000000000;
@@ -445,39 +446,37 @@ START_TEST(mul_test_14) {
   value_1.bits[0] = 0b00000000000000000000000000100011;
   value_1.bits[1] = 0b00000000000000000000000000000000;
   value_1.bits[2] = 0b00000000000000000000000000000000;
-  value_1.bits[3] = 0b10000000000000010000000000000000;
+  value_1.bits[3] = 0b10000000000001010000000000000000;
 
-  // s21_decimal check = {{0x69, 0, 0, 0b10000000000000100000000000000000}}; //
-  // check = -1.225
+  // check = -0.0001225
   float check_float = 0;
   int return_value = s21_mul(value_1, value_2, &result);
   s21_from_decimal_to_float(result, &check_float);
-  // printf("\nresult: %f\n", check_float);
-  ck_assert_float_eq(check_float, -1.225);
+  ck_assert_float_eq(check_float, -0.0001225);
   ck_assert_int_eq(return_value, 0);
 }
 END_TEST
 
 START_TEST(mul_test_15) {
   s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
-  // value_1 = 0.35;
-  // value_2 = 0.227;
+  // value_1 = -0.35;
+  // value_2 = -0.227;
 
   value_2.bits[0] = 0b00000000000000000000000000100011;
   value_2.bits[1] = 0b00000000000000000000000000000000;
   value_2.bits[2] = 0b00000000000000000000000000000000;
-  value_2.bits[3] = 0b00000000000000100000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
   value_1.bits[0] = 0b00000000000000000000000011100011;
   value_1.bits[1] = 0b00000000000000000000000000000000;
   value_1.bits[2] = 0b00000000000000000000000000000000;
-  value_1.bits[3] = 0b00000000000000110000000000000000;
+  value_1.bits[3] = 0b10000000000000110000000000000000;
 
   // s21_decimal check = {{0x69, 0, 0, 0b10000000000000100000000000000000}}; //
   // check = 0.07945
   float check_float = 0;
   int return_value = s21_mul(value_1, value_2, &result);
   s21_from_decimal_to_float(result, &check_float);
-  // printf("\nresult: %f\n", check_float);
+  // printf("\nresult: %u\n", result.bits[3]);
   ck_assert_float_eq(check_float, 0.07945);
   ck_assert_int_eq(return_value, 0);
 }
