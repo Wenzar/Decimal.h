@@ -47,6 +47,8 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     if (s21_is_less_or_equal(fabs_result, max_num)) {
       add_return = 2;
     }
+
+    result->bits[3] = value_1.bits[3] | value_2.bits[3];
   }
   return add_return;
 }
