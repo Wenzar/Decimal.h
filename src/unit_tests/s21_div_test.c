@@ -44,7 +44,7 @@ START_TEST(div_5) {
   s21_decimal value_1 = {{3500, 0, 0, 0}};
   s21_decimal value_2 = {{5, 0, 0, 0}};
   s21_decimal result = {{0, 0, 0, 0}};
-  s21_decimal check = {{70, 0, 0, 0}};
+  s21_decimal check = {{7000, 0, 0, 0}};
   set_degree(&value_1, 1);
   set_degree(&value_2, 2);
   int return_value = s21_div(value_1, value_2, &result);
@@ -94,7 +94,7 @@ START_TEST(div_9) {
   s21_decimal value_2 = {{1, 0, 0, 0}};
   set_degree(&value_2, 2);
   s21_decimal result = {{0, 0, 0, 0}};
-  s21_decimal check = {{1000u, 0, 0, 0}};
+  s21_decimal check = {{100000, 0, 0, 0}};
   int return_value = s21_div(value_1, value_2, &result);
   ck_assert_int_eq(s21_is_equal(result, check), 1);
   ck_assert_int_eq(return_value, 0);

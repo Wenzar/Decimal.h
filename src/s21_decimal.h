@@ -100,5 +100,6 @@ int check_zero_decimal(s21_decimal value);
 void set_degree(s21_decimal *value, int degree);
 void set_minos(s21_decimal *value);
 int get_minos(s21_decimal value);
+void big_set_degree(s21_big_decimal *value, int degree);
 
 #endif

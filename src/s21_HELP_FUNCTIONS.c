@@ -553,12 +553,21 @@ int check_zero_decimal(s21_decimal value) {
 
 void set_degree(s21_decimal *value, int degree) {
   int minos = 0;
-  minos = get_minos(*value);
+  minos = getBit(*value,127);
   value->bits[3] = 0;
-  degree <<= 16;
-  value->bits[3] = degree | value->bits[3];
+  value->bits[3]=degree<<16;
   if (minos) {
-    set_minos(value);
+    setBit(value,127,1);
+  }
+}
+
+void big_set_degree(s21_big_decimal *value, int degree) {
+  int minos = 0;
+  minos = big_getBit(*value,223);
+  value->bits[6] = 0;
+  value->bits[6]=degree<<16;
+  if (minos) {
+    big_setBit(value,223,1);
   }
 }
 
@@ -567,3 +576,4 @@ void set_minos(s21_decimal *value) {
 }
 
 int get_minos(s21_decimal value) { return (value.bits[3] & 1 << 31) != 0; }
+
