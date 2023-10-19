@@ -276,6 +276,7 @@ void division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
   *result = copy_result;
   result->bits[6] = scale;
 }
+
 int mantis_is_less_or_equal(s21_big_decimal value_1, s21_big_decimal value_2) {
   int result = 1;
   for (int big_bits = 5; big_bits >= 0; big_bits--) {
