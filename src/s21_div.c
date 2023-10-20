@@ -40,11 +40,8 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             }
 
             division_by_integer(current_value_1, current_value_2, &big_result);
-            
             big_set_degree(&big_result,find_out_the_degree(current_value_1)-find_out_the_degree(current_value_2));
-            
             add_return = bank_round(big_result, &big_result);
-            
             big_uninitilization(big_result, result);
             
           }
@@ -55,6 +52,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
                    (big_getBit(current_value_1, 223) &&
                     !big_getBit(current_value_2, 223))) {
           if (mantis_s21_is_equal(current_value_1, current_value_2)) {
+
             big_result = one_big_decimal;
             big_setBit(&big_result, 223, 1);
             big_set_degree(&big_result,find_out_the_degree(current_value_1)-find_out_the_degree(current_value_2));
@@ -69,6 +67,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
               raise_scale(&current_value_1);
               tmp_decimal = current_value_1;
             }
+
             division_by_integer(current_value_1, current_value_2, &big_result);
             big_set_degree(&big_result,find_out_the_degree(current_value_1)-find_out_the_degree(current_value_2));
             add_return = bank_round(big_result, &big_result);

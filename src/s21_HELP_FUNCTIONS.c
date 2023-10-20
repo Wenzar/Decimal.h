@@ -273,6 +273,7 @@ void division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
     tmp_one_decimal = one_big_decimal;
     copy_product = big_decimal_null;
   }
+  // printf("\ncopy_result: %u %u %u %u\n",copy_result.bits[0],copy_result.bits[1],copy_result.bits[2],copy_result.bits[6]);
   *result = copy_result;
   result->bits[6] = scale;
 }
