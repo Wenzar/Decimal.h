@@ -391,6 +391,7 @@ int mantis_is_greater(s21_big_decimal value_1, s21_big_decimal value_2) {
   }
   return result;
 }
+
 int mantis_is_greater_or_equal(s21_big_decimal value_1,
                                s21_big_decimal value_2) {
   int result = 1;

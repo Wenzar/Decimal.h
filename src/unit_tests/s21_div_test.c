@@ -336,9 +336,9 @@
 // END_TEST
 
 START_TEST(test_div_manual3) {
-  s21_decimal value_1, value_2, result = {{0, 0, 0, 0}};
-  float value1_float = s21_rand_r(-1e5, 1e5);
-  float value2_float = s21_rand_r(-1e5, 1e5);
+  s21_decimal value_1={0}, value_2={0}, result = {{0, 0, 0, 0}};
+  float value1_float = -99998.437500;
+  float value2_float = -73692.437500;
 
 // printf("\nvaleu1: %f\n",value1_float);
 // printf("\nvaleu2: %f\n",value2_float);
