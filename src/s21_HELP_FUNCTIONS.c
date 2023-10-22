@@ -273,7 +273,8 @@ void division_by_integer(s21_big_decimal value_1, s21_big_decimal value_2,
     tmp_one_decimal = one_big_decimal;
     copy_product = big_decimal_null;
   }
-  // printf("\ncopy_result: %u %u %u %u\n",copy_result.bits[0],copy_result.bits[1],copy_result.bits[2],copy_result.bits[6]);
+  // printf("\ncopy_result: %u %u %u
+  // %u\n",copy_result.bits[0],copy_result.bits[1],copy_result.bits[2],copy_result.bits[6]);
   *result = copy_result;
   result->bits[6] = scale;
 }
@@ -555,21 +556,21 @@ int check_zero_decimal(s21_decimal value) {
 
 void set_degree(s21_decimal *value, int degree) {
   int minos = 0;
-  minos = getBit(*value,127);
+  minos = getBit(*value, 127);
   value->bits[3] = 0;
-  value->bits[3]=degree<<16;
+  value->bits[3] = degree << 16;
   if (minos) {
-    setBit(value,127,1);
+    setBit(value, 127, 1);
   }
 }
 
 void big_set_degree(s21_big_decimal *value, int degree) {
   int minos = 0;
-  minos = big_getBit(*value,223);
+  minos = big_getBit(*value, 223);
   value->bits[6] = 0;
-  value->bits[6]=degree<<16;
+  value->bits[6] = degree << 16;
   if (minos) {
-    big_setBit(value,223,1);
+    big_setBit(value, 223, 1);
   }
 }
 
@@ -578,4 +579,3 @@ void set_minos(s21_decimal *value) {
 }
 
 int get_minos(s21_decimal value) { return (value.bits[3] & 1 << 31) != 0; }
-
