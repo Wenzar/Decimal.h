@@ -1,4 +1,4 @@
-# s21_decimal
+# decimal
 
 ## Information
 
