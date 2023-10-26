@@ -1,4 +1,4 @@
-# decimal
+# Decimal
 
 ## Information
 
